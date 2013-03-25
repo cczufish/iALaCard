@@ -1,5 +1,5 @@
 //
-//  iALaCardViewController.h
+//  AboutViewController.h
 //  iALaCard
 //
 //  Created by Rodolfo Torres on 3/22/13.
@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ECSlidingViewController.h"
+#import "iALaCardBaseViewController.h"
 
-@interface iALaCardViewController : ECSlidingViewController
+@interface AboutViewController : iALaCardBaseViewController
 
 @end

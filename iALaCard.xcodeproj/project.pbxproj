@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31AF573216FFBC0300867ECD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AF573116FFBC0300867ECD /* CoreData.framework */; };
+		31AF574116FFBCAF00867ECD /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AF574016FFBCAF00867ECD /* CoreDataTableViewController.m */; };
+		31AF575C16FFBFAD00867ECD /* iALaCardModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31AF575A16FFBFAD00867ECD /* iALaCardModel.xcdatamodeld */; };
+		31AF576516FFC09C00867ECD /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AF576416FFC09C00867ECD /* Account.m */; };
+		31AF576816FFC09D00867ECD /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AF576716FFC09D00867ECD /* Transaction.m */; };
+		31AF576B16FFC0D300867ECD /* Account+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AF576A16FFC0D300867ECD /* Account+Create.m */; };
+		31AF576E16FFC0E600867ECD /* Transaction+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AF576D16FFC0E500867ECD /* Transaction+Create.m */; };
+		31AF577416FFC53800867ECD /* UIManagedDocument+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AF577316FFC53800867ECD /* UIManagedDocument+Shared.m */; };
+		31DF403016FE1DAB00DAD373 /* FloatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF402F16FE1DAB00DAD373 /* FloatingView.m */; };
+		31DF403416FE262800DAD373 /* FloatingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF403316FE262800DAD373 /* FloatingTextView.m */; };
 		31EBEEA416FD0BAA0029BE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EBEEA316FD0BAA0029BE35 /* UIKit.framework */; };
 		31EBEEA616FD0BAA0029BE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EBEEA516FD0BAA0029BE35 /* Foundation.framework */; };
 		31EBEEA816FD0BAA0029BE35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EBEEA716FD0BAA0029BE35 /* CoreGraphics.framework */; };
@@ -16,11 +26,46 @@
 		31EBEEB616FD0BAA0029BE35 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EBEEB516FD0BAA0029BE35 /* Default.png */; };
 		31EBEEB816FD0BAA0029BE35 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EBEEB716FD0BAA0029BE35 /* Default@2x.png */; };
 		31EBEEBA16FD0BAA0029BE35 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EBEEB916FD0BAA0029BE35 /* Default-568h@2x.png */; };
-		31EBEEBD16FD0BAA0029BE35 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EBEEBB16FD0BAA0029BE35 /* MainStoryboard.storyboard */; };
+		31EBEEBD16FD0BAA0029BE35 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EBEEBB16FD0BAA0029BE35 /* iPhone.storyboard */; };
 		31EBEEC016FD0BAA0029BE35 /* iALaCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEEBF16FD0BAA0029BE35 /* iALaCardViewController.m */; };
+		31EBEEC916FD0CAE0029BE35 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEEC816FD0CAE0029BE35 /* OptionsViewController.m */; };
+		31EBEECF16FD14290029BE35 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEECC16FD14290029BE35 /* ECSlidingViewController.m */; };
+		31EBEED016FD14290029BE35 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEECE16FD14290029BE35 /* UIImage+ImageWithUIView.m */; };
+		31EBEED916FD1BB60029BE35 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEED816FD1BB60029BE35 /* AboutViewController.m */; };
+		31EBEEDC16FD1BDA0029BE35 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEEDB16FD1BDA0029BE35 /* LogInViewController.m */; };
+		31EBEEDF16FD1BF10029BE35 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEEDE16FD1BF10029BE35 /* AccountViewController.m */; };
+		31EBEEE216FD23BD0029BE35 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEEE116FD23BD0029BE35 /* NavigationViewController.m */; };
+		31EBEEE516FD247C0029BE35 /* TransactionsFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEEE416FD247C0029BE35 /* TransactionsFilterViewController.m */; };
+		31EBEEE816FD27900029BE35 /* iALaCardBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEEE716FD27900029BE35 /* iALaCardBaseViewController.m */; };
+		31EBEEEB16FD2A6C0029BE35 /* SampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EBEEEA16FD2A6C0029BE35 /* SampleTableViewController.m */; };
+		31EC2A6C16FF61EB00E11411 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EC2A6B16FF61EA00E11411 /* Security.framework */; };
+		31EC2A7016FF69D700E11411 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A6F16FF69D700E11411 /* SFHFKeychainUtils.m */; };
+		31EC2A7416FF79CD00E11411 /* aLaCardFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A7316FF79CD00E11411 /* aLaCardFetcher.m */; };
+		31EC2A7B16FF7A1A00E11411 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A7616FF7A1A00E11411 /* TFHpple.m */; };
+		31EC2A7C16FF7A1A00E11411 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A7816FF7A1A00E11411 /* TFHppleElement.m */; };
+		31EC2A7D16FF7A1A00E11411 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A7A16FF7A1A00E11411 /* XPathQuery.m */; };
+		31EC2A7F16FF7A2E00E11411 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EC2A7E16FF7A2E00E11411 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31AF573116FFBC0300867ECD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		31AF573F16FFBCAF00867ECD /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = "Core Data/CoreDataTableViewController.h"; sourceTree = "<group>"; };
+		31AF574016FFBCAF00867ECD /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = "Core Data/CoreDataTableViewController.m"; sourceTree = "<group>"; };
+		31AF575B16FFBFAD00867ECD /* iALaCardModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iALaCardModel.xcdatamodel; sourceTree = "<group>"; };
+		31AF576316FFC09C00867ECD /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Account.h; path = "Core Data/Account.h"; sourceTree = "<group>"; };
+		31AF576416FFC09C00867ECD /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Account.m; path = "Core Data/Account.m"; sourceTree = "<group>"; };
+		31AF576616FFC09D00867ECD /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transaction.h; path = "Core Data/Transaction.h"; sourceTree = "<group>"; };
+		31AF576716FFC09D00867ECD /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Transaction.m; path = "Core Data/Transaction.m"; sourceTree = "<group>"; };
+		31AF576916FFC0D300867ECD /* Account+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Account+Create.h"; path = "Core Data/Account+Create.h"; sourceTree = "<group>"; };
+		31AF576A16FFC0D300867ECD /* Account+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Account+Create.m"; path = "Core Data/Account+Create.m"; sourceTree = "<group>"; };
+		31AF576C16FFC0E500867ECD /* Transaction+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Transaction+Create.h"; path = "Core Data/Transaction+Create.h"; sourceTree = "<group>"; };
+		31AF576D16FFC0E500867ECD /* Transaction+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Transaction+Create.m"; path = "Core Data/Transaction+Create.m"; sourceTree = "<group>"; };
+		31AF577216FFC53800867ECD /* UIManagedDocument+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIManagedDocument+Shared.h"; path = "Core Data/UIManagedDocument+Shared.h"; sourceTree = "<group>"; };
+		31AF577316FFC53800867ECD /* UIManagedDocument+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIManagedDocument+Shared.m"; path = "Core Data/UIManagedDocument+Shared.m"; sourceTree = "<group>"; };
+		31DF402E16FE1DAB00DAD373 /* FloatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingView.h; sourceTree = "<group>"; };
+		31DF402F16FE1DAB00DAD373 /* FloatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingView.m; sourceTree = "<group>"; };
+		31DF403216FE262800DAD373 /* FloatingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingTextView.h; sourceTree = "<group>"; };
+		31DF403316FE262800DAD373 /* FloatingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingTextView.m; sourceTree = "<group>"; };
 		31EBEEA016FD0BAA0029BE35 /* iALaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iALaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31EBEEA316FD0BAA0029BE35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		31EBEEA516FD0BAA0029BE35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -34,9 +79,41 @@
 		31EBEEB516FD0BAA0029BE35 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		31EBEEB716FD0BAA0029BE35 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		31EBEEB916FD0BAA0029BE35 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		31EBEEBC16FD0BAA0029BE35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		31EBEEBC16FD0BAA0029BE35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPhone.storyboard; sourceTree = "<group>"; };
 		31EBEEBE16FD0BAA0029BE35 /* iALaCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iALaCardViewController.h; sourceTree = "<group>"; };
 		31EBEEBF16FD0BAA0029BE35 /* iALaCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iALaCardViewController.m; sourceTree = "<group>"; };
+		31EBEEC716FD0CAE0029BE35 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		31EBEEC816FD0CAE0029BE35 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		31EBEECB16FD14290029BE35 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		31EBEECC16FD14290029BE35 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		31EBEECD16FD14290029BE35 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
+		31EBEECE16FD14290029BE35 /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
+		31EBEED716FD1BB60029BE35 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; wrapsLines = 1; };
+		31EBEED816FD1BB60029BE35 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		31EBEEDA16FD1BDA0029BE35 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		31EBEEDB16FD1BDA0029BE35 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		31EBEEDD16FD1BF10029BE35 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		31EBEEDE16FD1BF10029BE35 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		31EBEEE016FD23BD0029BE35 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		31EBEEE116FD23BD0029BE35 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		31EBEEE316FD247C0029BE35 /* TransactionsFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsFilterViewController.h; sourceTree = "<group>"; };
+		31EBEEE416FD247C0029BE35 /* TransactionsFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsFilterViewController.m; sourceTree = "<group>"; };
+		31EBEEE616FD27900029BE35 /* iALaCardBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iALaCardBaseViewController.h; sourceTree = "<group>"; };
+		31EBEEE716FD27900029BE35 /* iALaCardBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iALaCardBaseViewController.m; sourceTree = "<group>"; };
+		31EBEEE916FD2A6C0029BE35 /* SampleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewController.h; sourceTree = "<group>"; };
+		31EBEEEA16FD2A6C0029BE35 /* SampleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewController.m; sourceTree = "<group>"; };
+		31EC2A6B16FF61EA00E11411 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		31EC2A6E16FF69D700E11411 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = Security/SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		31EC2A6F16FF69D700E11411 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = Security/SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		31EC2A7216FF79CD00E11411 /* aLaCardFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aLaCardFetcher.h; sourceTree = "<group>"; };
+		31EC2A7316FF79CD00E11411 /* aLaCardFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aLaCardFetcher.m; sourceTree = "<group>"; };
+		31EC2A7516FF7A1A00E11411 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		31EC2A7616FF7A1A00E11411 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		31EC2A7716FF7A1A00E11411 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		31EC2A7816FF7A1A00E11411 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		31EC2A7916FF7A1A00E11411 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		31EC2A7A16FF7A1A00E11411 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		31EC2A7E16FF7A2E00E11411 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +121,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AF573216FFBC0300867ECD /* CoreData.framework in Frameworks */,
+				31EC2A7F16FF7A2E00E11411 /* libxml2.dylib in Frameworks */,
+				31EC2A6C16FF61EB00E11411 /* Security.framework in Frameworks */,
 				31EBEEA416FD0BAA0029BE35 /* UIKit.framework in Frameworks */,
 				31EBEEA616FD0BAA0029BE35 /* Foundation.framework in Frameworks */,
 				31EBEEA816FD0BAA0029BE35 /* CoreGraphics.framework in Frameworks */,
@@ -53,9 +133,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31AF571B16FFBA5200867ECD /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				31AF575A16FFBFAD00867ECD /* iALaCardModel.xcdatamodeld */,
+				31AF576616FFC09D00867ECD /* Transaction.h */,
+				31AF576716FFC09D00867ECD /* Transaction.m */,
+				31AF576316FFC09C00867ECD /* Account.h */,
+				31AF576416FFC09C00867ECD /* Account.m */,
+				31AF576916FFC0D300867ECD /* Account+Create.h */,
+				31AF576A16FFC0D300867ECD /* Account+Create.m */,
+				31AF576C16FFC0E500867ECD /* Transaction+Create.h */,
+				31AF576D16FFC0E500867ECD /* Transaction+Create.m */,
+				31AF573F16FFBCAF00867ECD /* CoreDataTableViewController.h */,
+				31AF574016FFBCAF00867ECD /* CoreDataTableViewController.m */,
+				31AF577216FFC53800867ECD /* UIManagedDocument+Shared.h */,
+				31AF577316FFC53800867ECD /* UIManagedDocument+Shared.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		31DF403116FE25E200DAD373 /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				31DF402E16FE1DAB00DAD373 /* FloatingView.h */,
+				31DF402F16FE1DAB00DAD373 /* FloatingView.m */,
+				31DF403216FE262800DAD373 /* FloatingTextView.h */,
+				31DF403316FE262800DAD373 /* FloatingTextView.m */,
+			);
+			name = "Custom Controls";
+			sourceTree = "<group>";
+		};
 		31EBEE9716FD0BAA0029BE35 = {
 			isa = PBXGroup;
 			children = (
+				31EC2A7E16FF7A2E00E11411 /* libxml2.dylib */,
 				31EBEEA916FD0BAA0029BE35 /* iALaCard */,
 				31EBEEA216FD0BAA0029BE35 /* Frameworks */,
 				31EBEEA116FD0BAA0029BE35 /* Products */,
@@ -73,6 +185,8 @@
 		31EBEEA216FD0BAA0029BE35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31AF573116FFBC0300867ECD /* CoreData.framework */,
+				31EC2A6B16FF61EA00E11411 /* Security.framework */,
 				31EBEEA316FD0BAA0029BE35 /* UIKit.framework */,
 				31EBEEA516FD0BAA0029BE35 /* Foundation.framework */,
 				31EBEEA716FD0BAA0029BE35 /* CoreGraphics.framework */,
@@ -83,11 +197,11 @@
 		31EBEEA916FD0BAA0029BE35 /* iALaCard */ = {
 			isa = PBXGroup;
 			children = (
-				31EBEEB216FD0BAA0029BE35 /* iALaCardAppDelegate.h */,
-				31EBEEB316FD0BAA0029BE35 /* iALaCardAppDelegate.m */,
-				31EBEEBB16FD0BAA0029BE35 /* MainStoryboard.storyboard */,
-				31EBEEBE16FD0BAA0029BE35 /* iALaCardViewController.h */,
-				31EBEEBF16FD0BAA0029BE35 /* iALaCardViewController.m */,
+				31EBEEBB16FD0BAA0029BE35 /* iPhone.storyboard */,
+				31EC2A7116FF79CC00E11411 /* aLaCardFetcher */,
+				31EC2A6416FF5BB900E11411 /* Security */,
+				31EBEEC616FD0C840029BE35 /* IPhone */,
+				31AF571B16FFBA5200867ECD /* Core Data */,
 				31EBEEAA16FD0BAA0029BE35 /* Supporting Files */,
 			);
 			path = iALaCard;
@@ -96,6 +210,8 @@
 		31EBEEAA16FD0BAA0029BE35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				31EBEEB216FD0BAA0029BE35 /* iALaCardAppDelegate.h */,
+				31EBEEB316FD0BAA0029BE35 /* iALaCardAppDelegate.m */,
 				31EBEEAB16FD0BAA0029BE35 /* iALaCard-Info.plist */,
 				31EBEEAC16FD0BAA0029BE35 /* InfoPlist.strings */,
 				31EBEEAF16FD0BAA0029BE35 /* main.m */,
@@ -105,6 +221,68 @@
 				31EBEEB916FD0BAA0029BE35 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		31EBEEC616FD0C840029BE35 /* IPhone */ = {
+			isa = PBXGroup;
+			children = (
+				31EBEEBE16FD0BAA0029BE35 /* iALaCardViewController.h */,
+				31EBEEBF16FD0BAA0029BE35 /* iALaCardViewController.m */,
+				31EBEEC716FD0CAE0029BE35 /* OptionsViewController.h */,
+				31EBEEC816FD0CAE0029BE35 /* OptionsViewController.m */,
+				31EBEED716FD1BB60029BE35 /* AboutViewController.h */,
+				31EBEED816FD1BB60029BE35 /* AboutViewController.m */,
+				31EBEEDA16FD1BDA0029BE35 /* LogInViewController.h */,
+				31EBEEDB16FD1BDA0029BE35 /* LogInViewController.m */,
+				31EBEEDD16FD1BF10029BE35 /* AccountViewController.h */,
+				31EBEEDE16FD1BF10029BE35 /* AccountViewController.m */,
+				31EBEEE016FD23BD0029BE35 /* NavigationViewController.h */,
+				31EBEEE116FD23BD0029BE35 /* NavigationViewController.m */,
+				31EBEEE316FD247C0029BE35 /* TransactionsFilterViewController.h */,
+				31EBEEE916FD2A6C0029BE35 /* SampleTableViewController.h */,
+				31EBEEEA16FD2A6C0029BE35 /* SampleTableViewController.m */,
+				31EBEEE416FD247C0029BE35 /* TransactionsFilterViewController.m */,
+				31EBEEE616FD27900029BE35 /* iALaCardBaseViewController.h */,
+				31EBEEE716FD27900029BE35 /* iALaCardBaseViewController.m */,
+				31DF403116FE25E200DAD373 /* Custom Controls */,
+				31EBEECA16FD14290029BE35 /* ECSlidingViewController */,
+			);
+			name = IPhone;
+			sourceTree = "<group>";
+		};
+		31EBEECA16FD14290029BE35 /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				31EBEECB16FD14290029BE35 /* ECSlidingViewController.h */,
+				31EBEECC16FD14290029BE35 /* ECSlidingViewController.m */,
+				31EBEECD16FD14290029BE35 /* UIImage+ImageWithUIView.h */,
+				31EBEECE16FD14290029BE35 /* UIImage+ImageWithUIView.m */,
+			);
+			path = ECSlidingViewController;
+			sourceTree = "<group>";
+		};
+		31EC2A6416FF5BB900E11411 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				31EC2A6E16FF69D700E11411 /* SFHFKeychainUtils.h */,
+				31EC2A6F16FF69D700E11411 /* SFHFKeychainUtils.m */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
+		31EC2A7116FF79CC00E11411 /* aLaCardFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				31EC2A7216FF79CD00E11411 /* aLaCardFetcher.h */,
+				31EC2A7316FF79CD00E11411 /* aLaCardFetcher.m */,
+				31EC2A7516FF7A1A00E11411 /* TFHpple.h */,
+				31EC2A7616FF7A1A00E11411 /* TFHpple.m */,
+				31EC2A7716FF7A1A00E11411 /* TFHppleElement.h */,
+				31EC2A7816FF7A1A00E11411 /* TFHppleElement.m */,
+				31EC2A7916FF7A1A00E11411 /* XPathQuery.h */,
+				31EC2A7A16FF7A1A00E11411 /* XPathQuery.m */,
+			);
+			path = aLaCardFetcher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +341,7 @@
 				31EBEEB616FD0BAA0029BE35 /* Default.png in Resources */,
 				31EBEEB816FD0BAA0029BE35 /* Default@2x.png in Resources */,
 				31EBEEBA16FD0BAA0029BE35 /* Default-568h@2x.png in Resources */,
-				31EBEEBD16FD0BAA0029BE35 /* MainStoryboard.storyboard in Resources */,
+				31EBEEBD16FD0BAA0029BE35 /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +355,30 @@
 				31EBEEB016FD0BAA0029BE35 /* main.m in Sources */,
 				31EBEEB416FD0BAA0029BE35 /* iALaCardAppDelegate.m in Sources */,
 				31EBEEC016FD0BAA0029BE35 /* iALaCardViewController.m in Sources */,
+				31EBEEC916FD0CAE0029BE35 /* OptionsViewController.m in Sources */,
+				31EBEECF16FD14290029BE35 /* ECSlidingViewController.m in Sources */,
+				31EBEED016FD14290029BE35 /* UIImage+ImageWithUIView.m in Sources */,
+				31EBEED916FD1BB60029BE35 /* AboutViewController.m in Sources */,
+				31EBEEDC16FD1BDA0029BE35 /* LogInViewController.m in Sources */,
+				31EBEEDF16FD1BF10029BE35 /* AccountViewController.m in Sources */,
+				31EBEEE216FD23BD0029BE35 /* NavigationViewController.m in Sources */,
+				31EBEEE516FD247C0029BE35 /* TransactionsFilterViewController.m in Sources */,
+				31EBEEE816FD27900029BE35 /* iALaCardBaseViewController.m in Sources */,
+				31EBEEEB16FD2A6C0029BE35 /* SampleTableViewController.m in Sources */,
+				31DF403016FE1DAB00DAD373 /* FloatingView.m in Sources */,
+				31DF403416FE262800DAD373 /* FloatingTextView.m in Sources */,
+				31EC2A7016FF69D700E11411 /* SFHFKeychainUtils.m in Sources */,
+				31EC2A7416FF79CD00E11411 /* aLaCardFetcher.m in Sources */,
+				31EC2A7B16FF7A1A00E11411 /* TFHpple.m in Sources */,
+				31EC2A7C16FF7A1A00E11411 /* TFHppleElement.m in Sources */,
+				31EC2A7D16FF7A1A00E11411 /* XPathQuery.m in Sources */,
+				31AF574116FFBCAF00867ECD /* CoreDataTableViewController.m in Sources */,
+				31AF575C16FFBFAD00867ECD /* iALaCardModel.xcdatamodeld in Sources */,
+				31AF576516FFC09C00867ECD /* Account.m in Sources */,
+				31AF576816FFC09D00867ECD /* Transaction.m in Sources */,
+				31AF576B16FFC0D300867ECD /* Account+Create.m in Sources */,
+				31AF576E16FFC0E600867ECD /* Transaction+Create.m in Sources */,
+				31AF577416FFC53800867ECD /* UIManagedDocument+Shared.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,12 +393,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		31EBEEBB16FD0BAA0029BE35 /* MainStoryboard.storyboard */ = {
+		31EBEEBB16FD0BAA0029BE35 /* iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				31EBEEBC16FD0BAA0029BE35 /* en */,
 			);
-			name = MainStoryboard.storyboard;
+			name = iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -263,6 +465,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iALaCard/iALaCard-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "iALaCard/iALaCard-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -274,6 +477,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iALaCard/iALaCard-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "iALaCard/iALaCard-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -299,8 +503,22 @@
 				31EBEEC516FD0BAA0029BE35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		31AF575A16FFBFAD00867ECD /* iALaCardModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				31AF575B16FFBFAD00867ECD /* iALaCardModel.xcdatamodel */,
+			);
+			currentVersion = 31AF575B16FFBFAD00867ECD /* iALaCardModel.xcdatamodel */;
+			path = iALaCardModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 31EBEE9816FD0BAA0029BE35 /* Project object */;
 }

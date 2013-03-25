@@ -1,5 +1,5 @@
 //
-//  iALaCardViewController.h
+//  iALaCardBaseViewController.h
 //  iALaCard
 //
 //  Created by Rodolfo Torres on 3/22/13.
@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OptionsViewController.h"
+#import <QuartzCore/QuartzCore.h>
 #import "ECSlidingViewController.h"
-
-@interface iALaCardViewController : ECSlidingViewController
+@interface iALaCardBaseViewController : UIViewController
 
 @end

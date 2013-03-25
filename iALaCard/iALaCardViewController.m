@@ -7,6 +7,7 @@
 //
 
 #import "iALaCardViewController.h"
+#import "UIManagedDocument+Shared.h"
 
 @interface iALaCardViewController ()
 
@@ -17,13 +18,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+    self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"Account"];
 }
 
-- (void)didReceiveMemoryWarning
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return YES;
 }
 
 @end
