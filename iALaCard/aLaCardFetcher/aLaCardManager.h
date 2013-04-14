@@ -11,9 +11,11 @@
 #import "aLaCardFetcher.h"
 #import "Transaction+Create.h"
 #import "Transactions.h"
+#import "SVProgressHUD.h"
+#import "Constants.h"
 @interface aLaCardManager : NSObject
 @property (nonatomic, strong) Account *account;
 @property (nonatomic, strong) Transactions *transactions;
 - (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password;
-- (BOOL) refreshLogIn;
+- (void) refreshLogIn;
 @end

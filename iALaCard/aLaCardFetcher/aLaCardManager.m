@@ -18,7 +18,7 @@
 
 - (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password
 {
-    TFHpple *rawLogin = [aLaCardFetcher rawlogIn:cardNumber andPassword:password];
+    TFHpple *rawLogin = [aLaCardFetcher logIn:cardNumber andPassword:password];
     
     if(!rawLogin)
     {
@@ -47,7 +47,7 @@
                     return NO;
                 }
             }
-        
+            
             if(![[NSUserDefaults standardUserDefaults] objectForKey:CARD_OWNER_KEY])
             {
                 [[NSUserDefaults standardUserDefaults] setObject:account.owner forKey:CARD_OWNER_KEY];
@@ -72,12 +72,27 @@
 
 - (Transactions *) transactions
 {
-    _transactions = [[Transactions alloc] initWithParser:[aLaCardFetcher transactions]];
+    TFHpple *parser = [aLaCardFetcher transactions];
     
+    if(parser)
+    {
+        Transactions * trans = [[Transactions alloc] initWithParser:parser];
+        
+        if(trans.transactionsDictionary.count > 0)
+        {
+            _transactions = trans;
+        }
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showImage:NULL status: CONNECTION_ERROR];
+        });
+    }
     return _transactions;
 }
 
-- (BOOL) refreshLogIn
+- (void) refreshLogIn
 {
     NSString *cardnumber = [[NSUserDefaults standardUserDefaults] stringForKey:CARD_NUMBER_KEY];
     BOOL refreshStatus = YES;
@@ -88,6 +103,11 @@
         self.working = NO;
     }
     
-    return refreshStatus;
+    if(!refreshStatus)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showImage:NULL status: CONNECTION_ERROR];
+        });
+    }
 }
 @end

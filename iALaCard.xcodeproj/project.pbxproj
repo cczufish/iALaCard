@@ -99,7 +99,6 @@
 		31EC2A7C16FF7A1A00E11411 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A7816FF7A1A00E11411 /* TFHppleElement.m */; };
 		31EC2A7D16FF7A1A00E11411 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A7A16FF7A1A00E11411 /* XPathQuery.m */; };
 		31EC2A7F16FF7A2E00E11411 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EC2A7E16FF7A2E00E11411 /* libxml2.dylib */; };
-		31EE061C171ADF3F0063601F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE061B171ADF3F0063601F /* Reachability.m */; };
 		31EE061E171ADFAB0063601F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE061D171ADFAA0063601F /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
@@ -231,8 +230,6 @@
 		31EC2A7916FF7A1A00E11411 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		31EC2A7A16FF7A1A00E11411 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		31EC2A7E16FF7A2E00E11411 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		31EE061A171ADF3F0063601F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Reachability/Reachability.h; sourceTree = "<group>"; };
-		31EE061B171ADF3F0063601F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Reachability/Reachability.m; sourceTree = "<group>"; };
 		31EE061D171ADFAA0063601F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -400,7 +397,6 @@
 				31131B2B1711CFEA0025ACB4 /* Model */,
 				31EC2A7116FF79CC00E11411 /* aLaCardFetcher */,
 				31EC2A6416FF5BB900E11411 /* Security */,
-				31EE0619171ADF270063601F /* Reachability */,
 				31982B61170249D600A52257 /* SVProgressHUD */,
 				31EBEEAA16FD0BAA0029BE35 /* Supporting Files */,
 			);
@@ -483,15 +479,6 @@
 				31E8624217077D1A007911B3 /* aLaCardManager+Shared.m */,
 			);
 			path = aLaCardFetcher;
-			sourceTree = "<group>";
-		};
-		31EE0619171ADF270063601F /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				31EE061A171ADF3F0063601F /* Reachability.h */,
-				31EE061B171ADF3F0063601F /* Reachability.m */,
-			);
-			name = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -642,7 +629,6 @@
 				3173FAA81714C5FC002779B1 /* UIToolbarRightLogo.m in Sources */,
 				3173FAAB1714C645002779B1 /* UIToolbarLeftLogo.m in Sources */,
 				3173FAAE1714C6A0002779B1 /* UIViewBlack.m in Sources */,
-				31EE061C171ADF3F0063601F /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

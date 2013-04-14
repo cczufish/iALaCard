@@ -137,13 +137,8 @@
         self.recentTransactionsView.alpha = self.lblBalance.alpha = self.lblBalanceCurrent.alpha = self.lblLastRefreshView.alpha = TRANSPARENT;
         dispatch_queue_t fetchQ = dispatch_queue_create("fetcher", NULL);
         dispatch_async(fetchQ, ^{
-            BOOL refreshStatus = [[aLaCardManager sharedALaCardManager] refreshLogIn];
+            [[aLaCardManager sharedALaCardManager] refreshLogIn];
             dispatch_async(dispatch_get_main_queue(), ^{
-                if(!refreshStatus)
-                {
-                    //network error
-                    [SVProgressHUD showErrorWithStatus: CONNECTION_ERROR];
-                }
                 [self refresh];
             });
         });

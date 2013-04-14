@@ -38,7 +38,7 @@
         
         NSMutableArray *transactionsForSection = [sectionedTransactions objectForKey:transaction.date];
         
-        if(!transactionsForSection) //doesn't contain an object transaction
+        if(!transactionsForSection) //doesn't contain an transaction object
         {
             transactionsForSection = [[NSMutableArray alloc]init];
             

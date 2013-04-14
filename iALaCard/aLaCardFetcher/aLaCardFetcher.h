@@ -13,8 +13,7 @@
 @interface aLaCardFetcher : NSObject
 + (TFHpple *) account;
 + (TFHpple *) transactions;
-+ (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password;
-+ (TFHpple *) rawlogIn:(NSString *) cardNumber andPassword:(NSString *) password;
++ (TFHpple *) logIn:(NSString *) cardNumber andPassword:(NSString *) password;
 + (void) logOut;
 + (NSString *) action:(TFHpple* )parser;
 @property (nonatomic, strong) NSString *action;

@@ -12,20 +12,6 @@
 
 @end
 
-@implementation UIViewController(iALaCardViewExtension)
-
-//returns the parent controller
-- (iALaCardViewController *)iALaCardViewController
-{
-    UIViewController *viewController = self.parentViewController;
-    while (!(viewController == nil || [viewController isKindOfClass:[iALaCardViewController class]])) {
-        viewController = viewController.parentViewController;
-    }
-    
-    return (iALaCardViewController *)viewController;
-}
-@end
-
 @implementation iALaCardViewController
 
 //getter for the controls
@@ -43,8 +29,6 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startup) name:DOCUMENT_READY object:nil];
-    
     [self startup];
 }
 
@@ -61,6 +45,17 @@
     [self.controls setObject:[storyboard instantiateViewControllerWithIdentifier:HISTORY_CONTROLLER] forKey:HISTORY_CONTROLLER];
 }
 
+@end
 
-
+@implementation UIViewController(iALaCardViewExtension)
+//returns the parent controller
+- (iALaCardViewController *)iALaCardViewController
+{
+    UIViewController *viewController = self.parentViewController;
+    while (!(viewController == nil || [viewController isKindOfClass:[iALaCardViewController class]])) {
+        viewController = viewController.parentViewController;
+    }
+    
+    return (iALaCardViewController *)viewController;
+}
 @end

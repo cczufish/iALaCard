@@ -41,6 +41,8 @@ NSString *const LOG_IN_ERROR_TITLE = @"Dados de acesso inválidos";
 NSString *const LOG_IN_ERROR_MSG = @"Os campos número de cartão e código de acesso são obrigatórios";
 NSString *const OK_BUTTON = @"OK";
 NSString *const CONNECTION_ERROR = @"erro de ligação";
+NSString *const CONNECTION_LOST = @"ligação perdida";
+NSString *const CONNECTION_OK = @"ligação restabelecida";
 
 NSString *const COUNTRY = @"pt_PT";
 NSString *const UPDATE_LABEL_FORMAT = @"dd/MM/yyyy HH:mm:ss";

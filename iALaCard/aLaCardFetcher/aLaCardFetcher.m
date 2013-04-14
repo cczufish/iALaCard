@@ -9,19 +9,37 @@
 #import "aLaCardFetcher.h"
 
 #define TRANSACTION_URL @"https://www.alacard.pt/jsp/portlet/c_consumerprogram_home.jsp?section.jsp:section=account&page.jsp:page=consumer/account/c_alltransactions.jsp"
-
 #define ACCOUNT_URL @"https://www.alacard.pt/jsp/portlet/c_consumerprogram_home.jsp?page.jsp:page=consumer/account/c_account.jsp&section.jsp:section=account"
-
 #define LOGIN_URL @"https://www.alacard.pt/jsp/portlet/c_index.jsp?_reset=true&_portal=www.alacard.pt"
 #define LOGOUT_URL @"https://www.alacard.pt/jsp/portlet/logout.jsp"
 
+#define FORM @"//form"
+#define ACTION @"action"
+#define HIDDEN_FIELDS_XPATH @"//input[@type='hidden']"
+#define NAME @"name"
+#define VALUE @"value"
+#define KEY @"share/key.jsp:KEY"
+
+
+#define POST @"POST"
+#define PORTAL @"_portal"
+#define TYPE_CARD @"bes_cartaorefeicao"
+#define SUBMIT @"consumer/cartao_refeicao/c_login.jsp:submit"
+#define NOT_EMPTY @"not_empty"
+#define PAGE @"page.jsp:page"
+#define MEAL_PAGE @"consumer/cartao_refeicao/cartao_refeicao.jsp"
+#define LOGIN_KEY @"consumer/cartao_refeicao/c_login.jsp:login_id_form"
+#define PASSWORD_KEY @"consumer/cartao_refeicao/c_login.jsp:password_form"
+
+
 @implementation aLaCardFetcher
+
 + (NSString *) action:(TFHpple* )parser
 {
     NSString *action;
-    NSArray *formNodes = [parser searchWithXPathQuery:@"//form"];
+    NSArray *formNodes = [parser searchWithXPathQuery:FORM];
     for (TFHppleElement *element in formNodes) {
-        action = [element objectForKey:@"action"];
+        action = [element objectForKey:ACTION];
     }
     return action;
 }
@@ -29,11 +47,11 @@
 + (NSString *) key:(TFHpple* )parser
 {
     NSString *key;
-    NSArray *formNodes = [parser searchWithXPathQuery:@"//input[@type='hidden']"];
+    NSArray *formNodes = [parser searchWithXPathQuery: HIDDEN_FIELDS_XPATH];
     for (TFHppleElement *element in formNodes) {
-        NSString *name = [element objectForKey:@"name"];
-        if([name isEqualToString:@"share/key.jsp:KEY"]){
-            key = [element objectForKey:@"value"];
+        NSString *name = [element objectForKey: NAME];
+        if([name isEqualToString: KEY]){
+            key = [element objectForKey:VALUE];
             break;
         }
     }
@@ -49,74 +67,8 @@
 }
 
 
-//log in with key chain
-+ (BOOL) logIn
-{
-    NSString *cardnumber = [[NSUserDefaults standardUserDefaults] stringForKey:CARD_NUMBER_KEY];
-    
-    if(cardnumber)
-    {
-        return [aLaCardFetcher logIn:cardnumber andPassword:[SFHFKeychainUtils getPasswordForUsername:cardnumber andServiceName:KEYCHAIN_SERVICE error:nil]];
-    }
-    
-    return NO;
-}
-
 //log in with args
-+ (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password
-{
-    
-    NSLog(@"started logIn");
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSURL *logInUrl = [NSURL URLWithString:LOGIN_URL];
-    NSData *logInHtmlData = [NSData dataWithContentsOfURL:logInUrl];
-    
-    //NSString* aStr = [[NSString alloc] initWithData:logInHtmlData encoding:NSASCIIStringEncoding];
-    
-    //NSLog(@"Result: %@", aStr);
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    
-    TFHpple *logInParser = [TFHpple hppleWithHTMLData:logInHtmlData];
-    
-    NSString *action = [aLaCardFetcher action:logInParser];
-    
-    if(action)
-    {
-        NSURL *url = [[NSURL alloc] initWithString:action];
-        NSError *error;
-        NSURLResponse *response;
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        
-        [request setHTTPMethod:@"POST"];
-        [request setURL:url];
-        
-        NSMutableString *postString = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"share/key.jsp:KEY=%@", [aLaCardFetcher key:logInParser]]];
-        
-        [postString appendFormat:@"&%@=%@", @"_portal", @"bes_cartaorefeicao"];
-        [postString appendFormat:@"&%@=%@", @"consumer/cartao_refeicao/c_login.jsp:submit", @"not_empty"];
-        [postString appendFormat:@"&%@=%@", @"page.jsp:page", @"consumer/cartao_refeicao/cartao_refeicao.jsp"];
-        
-        [postString appendFormat:@"&%@=%@", @"consumer/cartao_refeicao/c_login.jsp:login_id_form", cardNumber];
-        [postString appendFormat:@"&%@=%@", @"consumer/cartao_refeicao/c_login.jsp:password_form", password];
-        
-        [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-        NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        
-        //NSString *aStr = [[NSString alloc] initWithData:result encoding:NSASCIIStringEncoding];
-        //NSLog(@"Result: %@", aStr);
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        NSLog(@"ended logIn");
-        return [aLaCardFetcher action:[TFHpple hppleWithHTMLData:result]] == nil;
-    }
-    else{//refresh
-        return true;
-    }
-}
-
-//log in with args
-+ (TFHpple *) rawlogIn:(NSString *) cardNumber andPassword:(NSString *) password
++ (TFHpple *) logIn:(NSString *) cardNumber andPassword:(NSString *) password
 {
     NSLog(@"started logIn");
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -142,17 +94,17 @@
         NSURLResponse *response;
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         
-        [request setHTTPMethod:@"POST"];
+        [request setHTTPMethod:POST];
         [request setURL:url];
         
-        NSMutableString *postString = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"share/key.jsp:KEY=%@", [aLaCardFetcher key:logInParser]]];
+        NSMutableString *postString = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"%@=%@", KEY, [aLaCardFetcher key:logInParser]]];
         
-        [postString appendFormat:@"&%@=%@", @"_portal", @"bes_cartaorefeicao"];
-        [postString appendFormat:@"&%@=%@", @"consumer/cartao_refeicao/c_login.jsp:submit", @"not_empty"];
-        [postString appendFormat:@"&%@=%@", @"page.jsp:page", @"consumer/cartao_refeicao/cartao_refeicao.jsp"];
+        [postString appendFormat:@"&%@=%@", PORTAL, TYPE_CARD];
+        [postString appendFormat:@"&%@=%@", SUBMIT, NOT_EMPTY];
+        [postString appendFormat:@"&%@=%@", PAGE, MEAL_PAGE];
         
-        [postString appendFormat:@"&%@=%@", @"consumer/cartao_refeicao/c_login.jsp:login_id_form", cardNumber];
-        [postString appendFormat:@"&%@=%@", @"consumer/cartao_refeicao/c_login.jsp:password_form", password];
+        [postString appendFormat:@"&%@=%@", LOGIN_KEY, cardNumber];
+        [postString appendFormat:@"&%@=%@", PASSWORD_KEY, password];
         
         [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -166,7 +118,7 @@
         return [TFHpple hppleWithHTMLData:result];
     }
     else{//refresh
-        NSLog(@"refresh!!!");
+        NSLog(@"refresh");
         return logInParser;
     }
 }
@@ -196,8 +148,16 @@
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
-    NSLog(@"end history");
-    return [TFHpple hppleWithHTMLData:transactionsHtmlData];
+    if(transactionsHtmlData)
+    {
+        NSLog(@"end history");
+        return [TFHpple hppleWithHTMLData:transactionsHtmlData];
+    }
+    else
+    {
+        NSLog(@"network error");
+        return NULL;
+    }
 }
 
 
