@@ -7,13 +7,8 @@
 //
 
 #import "LogInViewController.h"
-#import <QuartzCore/QuartzCore.h>
-#import "SFHFKeychainUtils.h"
-#import "aLaCardFetcher.h"
-#import "TFHpple.h"
 
 @interface LogInViewController ()
-@property (strong, nonatomic) IBOutlet UIView *welcomeView;
 @property (strong, nonatomic) IBOutlet UITextField *txtPassword;
 @property (strong, nonatomic) IBOutlet UIView *credentialsView;
 @property (strong, nonatomic) IBOutlet UITextField *txtCardNumber;
@@ -22,31 +17,64 @@
 
 @implementation LogInViewController
 
+#define ANIMATION 2
+
 - (IBAction)logIn
 {
-    [self.spinner startAnimating];
-    
-    [self.txtCardNumber resignFirstResponder];
-    
-    dispatch_queue_t loginQ = dispatch_queue_create("login", NULL);
-    dispatch_async(loginQ, ^{
-        BOOL logIn = [aLaCardFetcher logIn:self.txtCardNumber.text andPassword:self.txtPassword.text];
+    if([self validInputs])
+    {
+        [SVProgressHUD showWithStatus: WAIT_LOG_IN_MSG maskType:SVProgressHUDMaskTypeGradient];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.spinner stopAnimating];
-            if(logIn){
-                [[NSUserDefaults standardUserDefaults] setObject:self.txtCardNumber.text forKey:CARD_NUMBER_KEY];
-                
-                [SFHFKeychainUtils storeUsername:self.txtCardNumber.text
-                                     andPassword:self.txtPassword.text
-                                  forServiceName:KEYCHAIN_SERVICE
-                                  updateExisting:YES
-                                           error:nil];
-                
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
+        [self.txtCardNumber resignFirstResponder];
+        
+        dispatch_queue_t loginQ = dispatch_queue_create("fetcher", NULL);
+        
+        NSString *txtCardNumber = self.txtCardNumber.text;
+        NSString *txtPassword = self.txtPassword.text;
+        dispatch_async(loginQ, ^{
+            BOOL logIn = [[aLaCardManager sharedALaCardManager] logIn:txtCardNumber andPassword:txtPassword];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                if(logIn){
+                    [SVProgressHUD showSuccessWithStatus:LOG_IN_OK];
+                    [[NSUserDefaults standardUserDefaults] setObject:self.txtCardNumber.text forKey:CARD_NUMBER_KEY];
+                    
+                    [SFHFKeychainUtils storeUsername:self.txtCardNumber.text
+                                         andPassword:self.txtPassword.text
+                                      forServiceName:KEYCHAIN_SERVICE
+                                      updateExisting:YES
+                                               error:nil];
+                    
+                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:ACCOUNT_REFRESH object:self userInfo:nil];
+                    
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+                else
+                {
+                    [SVProgressHUD showErrorWithStatus:LOG_IN_NOTOK];
+                }
+            });
         });
-    });
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LOG_IN_ERROR_TITLE message:LOG_IN_ERROR_MSG delegate:self cancelButtonTitle:OK_BUTTON otherButtonTitles:nil]
+    ;    
+        [alert show];
+    }
+}
+
+
+- (BOOL) validInputs
+{
+    
+    NSString *cardNumber = [self.txtCardNumber.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    NSString *password = [self.txtPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    return cardNumber.length > 0 && password.length > 0;
 }
 
 - (void)viewDidLoad
@@ -56,11 +84,12 @@
     
     [self.txtCardNumber becomeFirstResponder];
     
+    //debug
     self.txtCardNumber.text = @"4246610400911733";
     self.txtPassword.text = @"638638";
     
     self.txtPassword.secureTextEntry = YES;
-    
+    self.txtPassword.keyboardType = UIKeyboardTypeNumberPad;
     self.txtCardNumber.keyboardType = UIKeyboardTypeNumberPad;
 }
 
@@ -68,13 +97,12 @@
 {
     [super viewDidAppear:YES];
     
-    [UIView animateWithDuration:2 animations:^{self.credentialsView.alpha = 1.0;}];
+    [UIView animateWithDuration:ANIMATION animations:^{self.credentialsView.alpha = 1.0;}];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
 {
     self.credentialsView.alpha = 0;
-    [self.welcomeView setCenter:self.view.center];
 }
 
 

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ECSlidingViewController.h"
+#import "SFHFKeychainUtils.h"
+#import "aLaCardFetcher.h"
+#import "iALaCardViewController.h"
+#import "Constants.h"
 @interface OptionsViewController : UIViewController
 
 @end

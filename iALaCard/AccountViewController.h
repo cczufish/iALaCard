@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "iALaCardBaseViewController.h"
+#import "aLaCardManager+Shared.h"
+#import <QuartzCore/QuartzCore.h>
+#import "SFHFKeychainUtils.h"
+#import "Transaction.h"
+#import "TransactionTableViewCell.h"
+#import "SVProgressHUD.h"
 
-@interface AccountViewController : iALaCardBaseViewController
+@interface AccountViewController : iALaCardBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

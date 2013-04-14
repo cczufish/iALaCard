@@ -29,9 +29,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define CARD_NUMBER_KEY @"cardNumber"
-#define KEYCHAIN_SERVICE @"iALaCardService"
-
 @interface SFHFKeychainUtils : NSObject
 
 + (NSString *) getPasswordForUsername: (NSString *) username andServiceName: (NSString *) serviceName error: (NSError **) error;

@@ -7,24 +7,15 @@
 //
 
 #import "FloatingView.h"
-#import <QuartzCore/QuartzCore.h>
 
-#define CORNER_RADIUS 15.0f
+#define CORNER_RADIUS 8.0f
 #define BORDER_WIDTH 0.5f
 #define SHADOW_OPACITY 0.8
 #define SHADOW_RADIUS 2.0
 #define SHADOW_OFFSET 1.0
-#define COLOR [UIColor whiteColor].CGColor
+#define COLOR [UIColor grayColor].CGColor
 
 @implementation FloatingView
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-    }
-    return self;
-}
 
 -(void) didMoveToWindow
 {

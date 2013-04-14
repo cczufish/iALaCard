@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <QuartzCore/QuartzCore.h>
+#import "SFHFKeychainUtils.h"
+#import "SVProgressHUD.h"
+#import "Constants.h"
+#import "aLaCardManager+Shared.h"
 @interface LogInViewController : UIViewController
 
 @end

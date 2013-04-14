@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
+#import "aLaCardManager+Shared.h"
 
 @interface iALaCardViewController : ECSlidingViewController
-
+@property (strong, nonatomic) NSMutableDictionary *controls;
+@end
+@interface UIViewController(iALaCardViewExtension)
+//extension for the base view controller
+- (iALaCardViewController *)iALaCardViewController;
 @end

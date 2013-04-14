@@ -7,129 +7,73 @@
 //
 
 #import "OptionsViewController.h"
-#import "ECSlidingViewController.h"
-#import "SFHFKeychainUtils.h"
-#import "aLaCardFetcher.h"
 
 @interface OptionsViewController () <UIActionSheetDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *btnAccount;
-@property (strong, nonatomic) IBOutlet UIButton *btnRecent;
 @property (strong, nonatomic) IBOutlet UIButton *btnHistory;
 @property (strong, nonatomic) IBOutlet UIButton *btnLogOut;
 @property (strong, nonatomic) IBOutlet UIButton *btnAbout;
+@property (strong, nonatomic) IBOutlet UILabel *lblOwner;
 
-@property (strong, nonatomic) NSMutableDictionary *controllers;
+@property (strong, nonatomic) UIButton *selectedButton;
 
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @end
 
 @implementation OptionsViewController
 
+#define ANIMATION 0.2
+#define SPACE 200.0f
 
-- (NSMutableDictionary *) controllers
-{
-    if(!_controllers)
-    {
-        _controllers = [[NSMutableDictionary alloc] init];
-    }
-
-    return _controllers;
-}
-
+//action sheet for logging out
 -(UIActionSheet *) actionSheet
 {
     if(!_actionSheet)
     {
-        _actionSheet = [[UIActionSheet alloc] initWithTitle:@"Deseja efectuar o log out?" delegate:self cancelButtonTitle:@"Cancelar" destructiveButtonTitle:@"Log out" otherButtonTitles:nil, nil];
+        _actionSheet = [[UIActionSheet alloc] initWithTitle:LOG_OUT_MSG delegate:self cancelButtonTitle: CANCEL_BUTTON destructiveButtonTitle: LEAVE_BUTTON otherButtonTitles:nil, nil];
     }
     
     return _actionSheet;
 }
 
--(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex == self.actionSheet.destructiveButtonIndex)
-    {
-        dispatch_async(dispatch_queue_create("logoff", NULL), ^{[aLaCardFetcher logOut];});
-        
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:CARD_NUMBER_KEY];
-        [self navigateTo:@"Account"];
-    }
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.slidingViewController setAnchorRightRevealAmount:200.0f];
+    [self.slidingViewController setAnchorRightRevealAmount:SPACE];
     self.slidingViewController.underLeftWidthLayout = ECFullWidth;
-}
-
-- (void) navigateTo:(NSString *) controllName
-{
     
-    UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:controllName];
+    self.selectedButton = self.btnAccount;
     
-    NSString *tag = [NSString stringWithFormat:@"%d", newTopViewController.view.tag];
-    
-    UIViewController *savedViewController = [self.controllers objectForKey:tag];
-    
-    if(savedViewController) //stored controller
-    {
-        newTopViewController = savedViewController;
-        
-    }else if(self.slidingViewController.topViewController.view.tag == newTopViewController.view.tag){ //same controller
-        newTopViewController = self.slidingViewController.topViewController;
-    }
-    
-    [self.controllers setObject:self.slidingViewController.topViewController forKey:[NSString stringWithFormat:@"%d", self.slidingViewController.topViewController.view.tag]];
-    
-    [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
-        CGRect frame = self.slidingViewController.topViewController.view.frame;
-        self.slidingViewController.topViewController = newTopViewController;
-        self.slidingViewController.topViewController.view.frame = frame;
-        [self.slidingViewController resetTopView];
-    }];
-    
-    if(!newTopViewController)
-    {
-        [self.controllers setObject:self.slidingViewController.topViewController forKey:[NSString stringWithFormat: @"%d", self.slidingViewController.topViewController.view.tag]];
-        newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:controllName];
-    }
-    
-
+    self.selectedButton.selected = YES;
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    self.btnAccount.alpha = self.btnRecent.alpha = self.btnHistory.alpha = self.btnLogOut.alpha = self.btnAbout.alpha = 0.0;
-    
+    self.btnAccount.alpha = self.btnHistory.alpha = self.btnLogOut.alpha = self.btnAbout.alpha = 0.0;
+    self.lblOwner.text = [[NSUserDefaults standardUserDefaults] objectForKey:CARD_OWNER_KEY];
     [self pushButtons];
 }
 
+#pragma mark - animated buttons
+
 -(void) pushButtons
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:ANIMATION animations:^{
         self.btnAccount.alpha = 1.0;
     } completion:^(BOOL finished) {
         if(finished){
-            [UIView animateWithDuration:0.2 animations:^{
-                self.btnRecent.alpha = 1.0;
+            [UIView animateWithDuration:ANIMATION animations:^{
+                self.btnHistory.alpha = 1.0;
             } completion:^(BOOL finished) {
                 if(finished){
-                    [UIView animateWithDuration:0.2 animations:^{
-                        self.btnHistory.alpha = 1.0;
+                    [UIView animateWithDuration:ANIMATION animations:^{
+                        self.btnAbout.alpha = 1.0;
                     } completion:^(BOOL finished) {
                         if(finished){
-                            [UIView animateWithDuration:0.2 animations:^{
+                            [UIView animateWithDuration:ANIMATION animations:^{
                                 self.btnLogOut.alpha = 1.0;
-                            } completion:^(BOOL finished) {
-                                if(finished){
-                                    [UIView animateWithDuration:0.2 animations:^{
-                                        self.btnAbout.alpha = 1.0;
-                                    }];
-                                }
                             }];
                         }
                     }];
@@ -137,25 +81,72 @@
             }];
         }
     }];
+}
+
+#pragma mark - actions
+
+-(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == self.actionSheet.destructiveButtonIndex)
+    {
+        dispatch_async(dispatch_queue_create("fetcher", NULL), ^{[aLaCardFetcher logOut];});
+        
+        //delete user defaults
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:CARD_NUMBER_KEY];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:CARD_OWNER_KEY];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:LOG_OFF object:self userInfo:nil];
+        
+        [self pushAccount:self.btnAccount];
+    }
+}
+
+- (void) navigateTo:(NSString *) controllName
+{
+    UIViewController *topViewController = [self.iALaCardViewController.controls objectForKey:controllName];
     
+    [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+        CGRect frame = self.slidingViewController.topViewController.view.frame;
+        self.slidingViewController.topViewController = topViewController;
+        self.slidingViewController.topViewController.view.frame = frame;
+        [self.slidingViewController resetTopView];
+    }];
+}
+
+- (void) toggleButton:(UIButton *) button
+{
+    if(button != self.selectedButton)
+    {
+        
+        self.selectedButton.selected = NO;
+        
+        self.selectedButton = button;
+        
+        self.selectedButton.selected = YES;
+    }
 }
 
 - (IBAction)pushAccount:(UIButton *)sender
 {
-    [self navigateTo:@"Account"];
-}
-- (IBAction)historyPush:(UIButton *)sender
-{
-    [self navigateTo:@"History"];
+    [self toggleButton:sender];
+    [self navigateTo:ACCOUNT_CONTROLLER];
 }
 
-- (IBAction)aboutPush
+- (IBAction)pushHistory:(UIButton *)sender
 {
-    [self navigateTo:@"About"];
+    [self toggleButton:sender];
+    [self navigateTo:HISTORY_CONTROLLER];
+}
+- (IBAction)pushAbout:(UIButton *)sender
+{
+    [self toggleButton:sender];
+    [self navigateTo:ABOUT_CONTROLLER];
 }
 
-- (IBAction)logOut
+- (IBAction)pushLogOut:(id)sender
 {
     [self.actionSheet showInView:self.view];
 }
+
+
 @end

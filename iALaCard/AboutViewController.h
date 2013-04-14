@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "iALaCardBaseViewController.h"
 
-@interface AboutViewController : iALaCardBaseViewController
+@interface AboutViewController : iALaCardBaseViewController <UIActionSheetDelegate>
 
 @end

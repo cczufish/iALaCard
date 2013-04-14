@@ -7,33 +7,43 @@
 //
 
 #import "AccountViewController.h"
-#import <QuartzCore/QuartzCore.h>
-#import "SFHFKeychainUtils.h"
-#import "Account+Create.h"
-#import "UIManagedDocument+Shared.h"
-#import "aLaCardFetcher.h"
+
 
 @interface AccountViewController ()
-@property (strong, nonatomic) IBOutlet UIView *accountDetailsView;
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UILabel *lblOwner;
 @property (strong, nonatomic) IBOutlet UILabel *lblNumber;
 @property (strong, nonatomic) IBOutlet UILabel *lblBalance;
 @property (strong, nonatomic) IBOutlet UILabel *lblBalanceCurrent;
-
 @property (strong, nonatomic) IBOutlet UILabel *lblLastRefreshDate;
 @property (strong, nonatomic) IBOutlet UILabel *lblExpirationDate;
-
 @property (strong, nonatomic) IBOutlet UILabel *lblCVV2;
+@property (strong, nonatomic) IBOutlet UITableView *recentTransactionsView;
+@property (strong, nonatomic) IBOutlet UILabel *lblNoTransactions;
+@property (strong, nonatomic) IBOutlet UIView *lblLastRefreshView;
+@property (strong, nonatomic) Account *account;
 
 @end
 
 @implementation AccountViewController
 
+#define ANIMATION 2.0
+#define TRANSPARENT 0.05
+#define LOGIN_SEGUE @"login:"
+#define TRANSACTION_CELL @"Transaction"
+
 -(void) viewDidLoad
 {
-    [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshFromNotification) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    //from login
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:ACCOUNT_REFRESH object:nil];
+    
+    if([[NSUserDefaults standardUserDefaults] stringForKey:CARD_NUMBER_KEY])
+    {
+        [self refreshFromNotification];
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -43,59 +53,109 @@
     
     if(![[NSUserDefaults standardUserDefaults] stringForKey:CARD_NUMBER_KEY])
     {
-        [self performSegueWithIdentifier:@"LogIn" sender:nil];
-    }
-    else
-    {
-        [self refresh];
+        [self performSegueWithIdentifier:LOGIN_SEGUE sender:nil];
     }
 }
 
-- (IBAction)flipView
+
+
+#pragma mark - tableView
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [UIView transitionWithView:self.accountDetailsView
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionFlipFromLeft
-                    animations:^{
-                        
-                    }
-                    completion:NULL];
+    return 1;
 }
 
-- (IBAction)refreshFromNotification
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(self.view.window)
+    NSInteger today = 0;
+    if(self.account)
     {
-        [self refresh];
+        for (Transaction *transaction in self.account.transactions) {
+            if([self last24hoursFrom:transaction.date])
+            {
+                today++;
+            }
+        }
+        
     }
+    
+    self.lblNoTransactions.hidden = today != 0;
+    
+    return today;
 }
+
+- (BOOL) last24hoursFrom:(NSDate *) date
+{
+    int dayNow = [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:[NSDate date]];
+    int day = [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:date];
+    
+    return dayNow - day <= 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TransactionTableViewCell *cell = (TransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TRANSACTION_CELL];
+    if([aLaCardManager sharedALaCardManager].account)
+    {
+        Transaction *transaction = [self.account.transactions objectAtIndex:[indexPath row]];
+        [cell setupWithTransaction:transaction];
+    }
+    return cell;
+}
+
+#pragma mark - refresh functions
 
 -(IBAction) refresh
 {
-    //    [self.refreshControl beginRefreshing];
+    self.account = [aLaCardManager sharedALaCardManager].account;
+    if(self.account){
+        self.lblOwner.text = self.account.owner;
+        self.lblNumber.text = self.account.cardNumber;
+        self.lblExpirationDate.text = self.account.expirationDate;
+        self.lblBalance.text = self.account.balance;
+        self.lblBalanceCurrent.text = self.account.balanceCurrent;
+        self.lblCVV2.text = self.account.cvv2;
+        self.lblNumber.text = [[[NSUserDefaults standardUserDefaults] objectForKey:CARD_NUMBER_KEY] description];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat: UPDATE_LABEL_FORMAT];
+        
+        self.lblLastRefreshDate.text = [dateFormatter stringFromDate:self.account.refreshDate];
+        [self reloadDataAnimated];
+        
+    }
     
-    
-    dispatch_queue_t fetchQ = dispatch_queue_create("fetchAccount", NULL);
-    
-    NSManagedObjectContext *managedObjectContext = [UIManagedDocument  sharedUIManagedDocument].managedObjectContext;
-    
-    dispatch_async(fetchQ, ^{
-        Account *account = [Account accountWithParser:[aLaCardFetcher account] inManagedObjectContext:managedObjectContext];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(account){
-                self.lblOwner.text = account.owner;
-                self.lblNumber.text = account.cardNumber;
-                self.lblExpirationDate.text = account.expirationDate;
-                self.lblBalance.text = account.balance;
-                self.lblBalanceCurrent.text = account.balanceCurrent;
-                self.lblLastRefreshDate.text = [account.refreshDate description];
-                self.lblCVV2.text = account.cvv2;
-                self.lblNumber.text = [[[NSUserDefaults standardUserDefaults] objectForKey:CARD_NUMBER_KEY] description];
-                
-                [self flipView];
-            }
-            //            [self.refreshControl endRefreshing];
+    [self.spinner stopAnimating];
+}
+
+- (void)refreshFromNotification
+{
+    if([[NSUserDefaults standardUserDefaults] stringForKey:CARD_NUMBER_KEY])
+    {
+        [self.spinner startAnimating];
+        self.recentTransactionsView.alpha = self.lblBalance.alpha = self.lblBalanceCurrent.alpha = self.lblLastRefreshView.alpha = TRANSPARENT;
+        dispatch_queue_t fetchQ = dispatch_queue_create("fetcher", NULL);
+        dispatch_async(fetchQ, ^{
+            BOOL refreshStatus = [[aLaCardManager sharedALaCardManager] refreshLogIn];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(!refreshStatus)
+                {
+                    //network error
+                    [SVProgressHUD showErrorWithStatus: CONNECTION_ERROR];
+                }
+                [self refresh];
+            });
         });
-    });
+    }
+}
+
+-(void) reloadDataAnimated
+{
+    [self.recentTransactionsView reloadData];
+    
+    [UIView animateWithDuration: ANIMATION animations:^{
+        self.recentTransactionsView.alpha = self.lblBalance.alpha = self.lblBalanceCurrent.alpha = self.lblLastRefreshView.alpha = 1.0;
+    }];
 }
 @end
