@@ -14,9 +14,12 @@
 
 @end
 
+#define CONFIRM_CHANGE_INFO @"/jsp/portlet/consumer/confirm_change_info.jsp"
+#define FIRST_LOGIN_DOMAIN @"First Login"
+
 @implementation aLaCardManager
 
-- (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password
+- (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password error:(NSError **) error
 {
     TFHpple *rawLogin = [aLaCardFetcher logIn:cardNumber andPassword:password];
     
@@ -25,6 +28,14 @@
         return NO;
     }
     NSString *action = [aLaCardFetcher action: rawLogin];
+    
+    if([action isEqual: CONFIRM_CHANGE_INFO])
+    {
+        [aLaCardFetcher logOut];
+        *error = [NSError errorWithDomain: FIRST_LOGIN_DOMAIN code: -1000 userInfo: nil];
+        return NO;
+    }
+    
     if(action == nil)
     {
         if(rawLogin)
@@ -99,7 +110,7 @@
     if(!self.working)
     {
         self.working = YES;
-        refreshStatus = [self logIn:cardnumber andPassword:[SFHFKeychainUtils getPasswordForUsername:cardnumber andServiceName:KEYCHAIN_SERVICE error:nil]];
+        refreshStatus = [self logIn:cardnumber andPassword:[SFHFKeychainUtils getPasswordForUsername:cardnumber andServiceName:KEYCHAIN_SERVICE error:nil] error:nil];
         self.working = NO;
     }
     

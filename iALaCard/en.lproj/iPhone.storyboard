@@ -495,15 +495,25 @@
                                             <action selector="logIn" destination="bbB-7o-GL7" eventType="touchUpInside" id="lxC-YL-5w0"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="É necessário alterar a password por favor aceda a www.alacard.pt para proceder à sua alteração." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="187" translatesAutoresizingMaskIntoConstraints="NO" id="A7Y-ZJ-fNw">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="187" id="OYH-Py-vo4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.91764712329999998" green="0.91764712329999998" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
+                                    <constraint firstItem="jGy-LF-FN6" firstAttribute="leading" secondItem="A7Y-ZJ-fNw" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="BfN-xG-6hw"/>
                                     <constraint firstItem="qaE-Ld-1J6" firstAttribute="top" secondItem="op8-Z0-CEc" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Dzj-wm-49S"/>
                                     <constraint firstItem="ayq-zT-Ca0" firstAttribute="leading" secondItem="op8-Z0-CEc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EOi-gk-6at"/>
                                     <constraint firstItem="jGy-LF-FN6" firstAttribute="top" secondItem="ayq-zT-Ca0" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NXb-8L-gPh"/>
                                     <constraint firstItem="qaE-Ld-1J6" firstAttribute="leading" secondItem="op8-Z0-CEc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="RHS-lJ-uGS"/>
-                                    <constraint firstAttribute="height" constant="137" type="user" id="U1O-Lq-hGv"/>
+                                    <constraint firstAttribute="height" constant="145" type="user" id="U1O-Lq-hGv"/>
                                     <constraint firstItem="ayq-zT-Ca0" firstAttribute="top" secondItem="op8-Z0-CEc" secondAttribute="top" constant="51" id="WCl-Dy-kHC"/>
+                                    <constraint firstItem="A7Y-ZJ-fNw" firstAttribute="top" secondItem="ayq-zT-Ca0" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="agz-Dr-0X4"/>
                                     <constraint firstAttribute="trailing" secondItem="ayq-zT-Ca0" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="iwf-Ee-3CY"/>
                                     <constraint firstAttribute="trailing" secondItem="qaE-Ld-1J6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="n3v-51-9FS"/>
                                     <constraint firstAttribute="trailing" secondItem="jGy-LF-FN6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uzx-Ul-sCc"/>
@@ -532,7 +542,7 @@
                             <constraint firstItem="op8-Z0-CEc" firstAttribute="top" secondItem="g77-Qk-nJn" secondAttribute="top" constant="95" type="user" id="Arz-Ag-60m"/>
                             <constraint firstItem="xlP-tU-KYL" firstAttribute="top" secondItem="g77-Qk-nJn" secondAttribute="top" type="default" id="GGz-mv-u5u"/>
                             <constraint firstItem="gd9-Pe-03S" firstAttribute="centerX" secondItem="xlP-tU-KYL" secondAttribute="centerX" type="default" id="Qwi-qi-o38"/>
-                            <constraint firstItem="x3l-ic-A9H" firstAttribute="centerX" secondItem="g77-Qk-nJn" secondAttribute="centerX" type="default" id="cy9-Vd-TdD"/>
+                            <constraint firstAttribute="trailing" secondItem="op8-Z0-CEc" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="oLZ-TB-Y2l"/>
                             <constraint firstItem="gd9-Pe-03S" firstAttribute="top" secondItem="g77-Qk-nJn" secondAttribute="top" constant="11" id="pes-e6-qMD"/>
                             <constraint firstItem="xlP-tU-KYL" firstAttribute="leading" secondItem="g77-Qk-nJn" secondAttribute="leading" type="default" id="tbY-Xu-1ct"/>
                             <constraint firstItem="x3l-ic-A9H" firstAttribute="centerX" secondItem="op8-Z0-CEc" secondAttribute="centerX" type="default" id="xur-W8-I4n"/>
@@ -540,6 +550,7 @@
                     </view>
                     <connections>
                         <outlet property="credentialsView" destination="op8-Z0-CEc" id="TBo-R5-nyn"/>
+                        <outlet property="lblFirstLogIn" destination="A7Y-ZJ-fNw" id="lOq-DI-fed"/>
                         <outlet property="txtCardNumber" destination="qaE-Ld-1J6" id="DWS-a4-kYt"/>
                         <outlet property="txtPassword" destination="ayq-zT-Ca0" id="iNJ-aH-iiz"/>
                     </connections>
@@ -697,9 +708,6 @@
                             </label>
                             <tableView clipsSubviews="YES" alpha="0.050000000000000003" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iG3-9I-gtd" customClass="BorderedTableView">
                                 <color key="backgroundColor" red="0.28627452250000002" green="0.28627452250000002" blue="0.28627452250000002" alpha="1" colorSpace="deviceRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="306" id="gCB-TC-OZa"/>
-                                </constraints>
                                 <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" Não foram efetuados movimentos hoje" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="306" id="7GM-un-SpU">
                                     <rect key="frame" x="0.0" y="62" width="306" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -849,7 +857,7 @@
                             <constraint firstItem="jc6-Pi-ENC" firstAttribute="top" secondItem="olr-rn-Xsg" secondAttribute="top" constant="187" type="user" id="DeS-mO-KOm"/>
                             <constraint firstItem="eMI-Vc-6Fd" firstAttribute="top" secondItem="olr-rn-Xsg" secondAttribute="top" constant="149" type="user" id="Dnz-fi-txy"/>
                             <constraint firstItem="tSK-Gm-1df" firstAttribute="trailing" secondItem="iG3-9I-gtd" secondAttribute="trailing" type="default" id="E9p-5o-yTC"/>
-                            <constraint firstItem="iG3-9I-gtd" firstAttribute="centerX" secondItem="0Jy-Oh-4KW" secondAttribute="centerX" type="default" id="FX6-lE-TAF"/>
+                            <constraint firstItem="iG3-9I-gtd" firstAttribute="centerX" secondItem="0Jy-Oh-4KW" secondAttribute="centerX" type="user" id="FX6-lE-TAF"/>
                             <constraint firstItem="BOl-7F-JjI" firstAttribute="top" secondItem="olr-rn-Xsg" secondAttribute="top" constant="134" id="G64-cY-kbZ"/>
                             <constraint firstItem="hjn-ai-JHM" firstAttribute="leading" secondItem="fNx-qx-s1y" secondAttribute="leading" type="default" id="G7Z-BO-Zym"/>
                             <constraint firstItem="fNx-qx-s1y" firstAttribute="leading" secondItem="6I3-aW-kSf" secondAttribute="leading" type="default" id="Gg2-At-vCm"/>
@@ -864,6 +872,7 @@
                             <constraint firstItem="9SF-KL-El6" firstAttribute="leading" secondItem="Zar-Pi-40G" secondAttribute="leading" type="default" id="OLm-Lo-Ma9"/>
                             <constraint firstItem="gQS-sY-YmO" firstAttribute="leading" secondItem="olr-rn-Xsg" secondAttribute="leading" constant="140" id="OWd-8d-Mtn"/>
                             <constraint firstItem="4Lt-3v-izC" firstAttribute="top" secondItem="olr-rn-Xsg" secondAttribute="top" constant="44" type="user" id="P5y-cu-E0i"/>
+                            <constraint firstItem="iG3-9I-gtd" firstAttribute="leading" secondItem="olr-rn-Xsg" secondAttribute="leading" constant="7" type="user" id="QRR-ZG-j5R"/>
                             <constraint firstItem="iHS-r3-dPZ" firstAttribute="top" secondItem="olr-rn-Xsg" secondAttribute="top" constant="11" id="RfX-Bz-KeN"/>
                             <constraint firstItem="fNx-qx-s1y" firstAttribute="centerY" secondItem="3b8-Cq-xrp" secondAttribute="centerY" type="default" id="THw-JO-NdQ"/>
                             <constraint firstItem="Ehi-DV-9la" firstAttribute="leading" secondItem="6Na-R4-NtZ" secondAttribute="leading" type="default" id="TmS-3C-RgB"/>
@@ -878,6 +887,7 @@
                             <constraint firstItem="4Lt-3v-izC" firstAttribute="trailing" secondItem="olr-rn-Xsg" secondAttribute="trailing" type="default" id="YVK-R2-93k"/>
                             <constraint firstItem="JLT-IW-ESf" firstAttribute="trailing" secondItem="olr-rn-Xsg" secondAttribute="trailing" type="default" id="YzF-cD-SFa"/>
                             <constraint firstItem="lO2-Ta-n1B" firstAttribute="trailing" secondItem="Zar-Pi-40G" secondAttribute="trailing" type="default" id="atC-xX-4iL"/>
+                            <constraint firstAttribute="trailing" secondItem="iG3-9I-gtd" secondAttribute="trailing" constant="7" type="user" id="bMn-aZ-w08"/>
                             <constraint firstItem="4Qc-tJ-13Z" firstAttribute="leading" secondItem="Zar-Pi-40G" secondAttribute="leading" type="default" id="bXj-71-rGK"/>
                             <constraint firstItem="5Wr-QI-z47" firstAttribute="centerY" secondItem="9SF-KL-El6" secondAttribute="centerY" type="default" id="bfO-2g-EGz"/>
                             <constraint firstItem="hjn-ai-JHM" firstAttribute="leading" secondItem="JLT-IW-ESf" secondAttribute="leading" type="default" id="cJP-Zy-A5I"/>
@@ -1001,6 +1011,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="credentialsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="lblFirstLogIn" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="txtCardNumber" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
@@ -1026,7 +1037,6 @@
         <class className="TransactionTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TransactionTableViewCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="lblDate" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblTransactionDetail" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="transactionImage" candidateClass="UIImageView"/>

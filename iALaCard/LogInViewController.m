@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *txtPassword;
 @property (strong, nonatomic) IBOutlet UIView *credentialsView;
 @property (strong, nonatomic) IBOutlet UITextField *txtCardNumber;
+@property (strong, nonatomic) IBOutlet UILabel *lblFirstLogIn;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @end
 
@@ -21,6 +22,8 @@
 
 - (IBAction)logIn
 {
+    self.lblFirstLogIn.hidden = YES;
+    
     if([self validInputs])
     {
         [SVProgressHUD showWithStatus: WAIT_LOG_IN_MSG maskType:SVProgressHUDMaskTypeGradient];
@@ -32,7 +35,8 @@
         NSString *txtCardNumber = self.txtCardNumber.text;
         NSString *txtPassword = self.txtPassword.text;
         dispatch_async(loginQ, ^{
-            BOOL logIn = [[aLaCardManager sharedALaCardManager] logIn:txtCardNumber andPassword:txtPassword];
+            NSError *error;
+            BOOL logIn = [[aLaCardManager sharedALaCardManager] logIn:txtCardNumber andPassword:txtPassword error:&error];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
@@ -53,6 +57,11 @@
                 }
                 else
                 {
+                    if(error) //first time log in error
+                    {
+                        self.lblFirstLogIn.hidden = NO;
+                    }
+                    
                     [SVProgressHUD showErrorWithStatus:LOG_IN_NOTOK];
                 }
             });
@@ -87,7 +96,7 @@
     //debug
 //    self.txtCardNumber.text = @"4246610400911733";
 //    self.txtPassword.text = @"638638";
-    
+//    
     self.txtPassword.secureTextEntry = YES;
     self.txtPassword.keyboardType = UIKeyboardTypeNumberPad;
     self.txtCardNumber.keyboardType = UIKeyboardTypeNumberPad;

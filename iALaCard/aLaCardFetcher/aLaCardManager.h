@@ -16,6 +16,6 @@
 @interface aLaCardManager : NSObject
 @property (nonatomic, strong) Account *account;
 @property (nonatomic, strong) Transactions *transactions;
-- (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password;
+- (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password error:(NSError **) error;
 - (void) refreshLogIn;
 @end
