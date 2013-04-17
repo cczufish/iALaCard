@@ -85,8 +85,8 @@
     [self.txtCardNumber becomeFirstResponder];
     
     //debug
-    self.txtCardNumber.text = @"4246610400911733";
-    self.txtPassword.text = @"638638";
+//    self.txtCardNumber.text = @"4246610400911733";
+//    self.txtPassword.text = @"638638";
     
     self.txtPassword.secureTextEntry = YES;
     self.txtPassword.keyboardType = UIKeyboardTypeNumberPad;
