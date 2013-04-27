@@ -9,7 +9,7 @@
             <objects>
                 <viewController storyboardIdentifier="Options" id="tuh-Cn-cEH" customClass="OptionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9rs-YO-mSm" customClass="UIViewBlack">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuv-qa-fja">
@@ -67,7 +67,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igx-UG-QY5">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="lhO-jK-UgQ"/>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="lhO-jK-UgQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -103,25 +103,47 @@
                                     <action selector="pushAbout:" destination="tuh-Cn-cEH" eventType="touchUpInside" id="Xe0-nA-ZI8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmy-ai-Zwk">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="u8Q-g1-hQA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Classificar" image="icone_historico.png" backgroundImage="menu_bott_v1.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="menu_bottselect.png"/>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushRateApp:" destination="tuh-Cn-cEH" eventType="touchUpInside" id="y15-3A-9RQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.1026459854" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="f1e-XS-TbI" firstAttribute="top" secondItem="9rs-YO-mSm" secondAttribute="top" constant="48" id="0Lt-CP-ybv"/>
                             <constraint firstItem="JVu-z4-ipI" firstAttribute="trailing" secondItem="9rs-YO-mSm" secondAttribute="trailing" type="default" id="44F-Rh-AoG"/>
-                            <constraint firstItem="Igx-UG-QY5" firstAttribute="trailing" secondItem="9rs-YO-mSm" secondAttribute="trailing" type="default" id="Dif-XN-7qU"/>
+                            <constraint firstItem="Jmy-ai-Zwk" firstAttribute="trailing" secondItem="9rs-YO-mSm" secondAttribute="trailing" type="default" id="83X-Xh-Ftd"/>
+                            <constraint firstItem="Jmy-ai-Zwk" firstAttribute="top" secondItem="9rs-YO-mSm" secondAttribute="top" constant="213" id="ClR-eT-PHR"/>
                             <constraint firstItem="f1e-XS-TbI" firstAttribute="leading" secondItem="9rs-YO-mSm" secondAttribute="leading" constant="27" id="EdR-uY-05F"/>
                             <constraint firstItem="dFW-qs-R5m" firstAttribute="trailing" secondItem="9rs-YO-mSm" secondAttribute="trailing" type="default" id="Ei7-mo-80C"/>
                             <constraint firstItem="dFW-qs-R5m" firstAttribute="top" secondItem="9rs-YO-mSm" secondAttribute="top" constant="123" id="FwX-1f-qpx"/>
                             <constraint firstItem="7ya-Ob-f03" firstAttribute="trailing" secondItem="9rs-YO-mSm" secondAttribute="trailing" type="default" id="GYh-Ol-RvH"/>
-                            <constraint firstItem="Igx-UG-QY5" firstAttribute="top" secondItem="9rs-YO-mSm" secondAttribute="top" constant="213" id="JsN-Ou-nBp"/>
                             <constraint firstItem="JVu-z4-ipI" firstAttribute="leading" secondItem="9rs-YO-mSm" secondAttribute="leading" type="default" id="JxK-x4-nVD"/>
-                            <constraint firstItem="7ya-Ob-f03" firstAttribute="top" secondItem="9rs-YO-mSm" secondAttribute="top" constant="168" id="OFK-Ct-Mt8"/>
                             <constraint firstItem="7ya-Ob-f03" firstAttribute="leading" secondItem="9rs-YO-mSm" secondAttribute="leading" type="default" id="Qyg-Jk-JtL"/>
-                            <constraint firstItem="Igx-UG-QY5" firstAttribute="leading" secondItem="9rs-YO-mSm" secondAttribute="leading" type="default" id="bh2-I2-a48"/>
+                            <constraint firstItem="Igx-UG-QY5" firstAttribute="trailing" secondItem="9rs-YO-mSm" secondAttribute="trailing" type="default" id="V6A-Fe-PVa"/>
+                            <constraint firstItem="Igx-UG-QY5" firstAttribute="top" secondItem="9rs-YO-mSm" secondAttribute="top" constant="258" type="user" id="aTM-pz-st0"/>
+                            <constraint firstItem="Jmy-ai-Zwk" firstAttribute="leading" secondItem="9rs-YO-mSm" secondAttribute="leading" type="default" id="dOm-iN-DZQ"/>
                             <constraint firstItem="vuv-qa-fja" firstAttribute="trailing" secondItem="9rs-YO-mSm" secondAttribute="trailing" type="default" id="eb7-47-XnD"/>
                             <constraint firstItem="JVu-z4-ipI" firstAttribute="top" secondItem="9rs-YO-mSm" secondAttribute="top" type="default" id="eth-JK-dwz"/>
                             <constraint firstItem="dFW-qs-R5m" firstAttribute="leading" secondItem="9rs-YO-mSm" secondAttribute="leading" type="default" id="h1g-of-NlT"/>
                             <constraint firstItem="vuv-qa-fja" firstAttribute="top" secondItem="f1e-XS-TbI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="oN1-3D-wxG"/>
+                            <constraint firstItem="Igx-UG-QY5" firstAttribute="leading" secondItem="9rs-YO-mSm" secondAttribute="leading" type="default" id="t4l-6e-4fe"/>
+                            <constraint firstItem="7ya-Ob-f03" firstAttribute="top" secondItem="9rs-YO-mSm" secondAttribute="top" constant="168" id="uUQ-5x-IWI"/>
                             <constraint firstItem="vuv-qa-fja" firstAttribute="leading" secondItem="9rs-YO-mSm" secondAttribute="leading" type="default" id="umY-1y-qvJ"/>
                         </constraints>
                     </view>
@@ -131,6 +153,7 @@
                         <outlet property="btnAccount" destination="vuv-qa-fja" id="5Xm-Y5-Pwb"/>
                         <outlet property="btnHistory" destination="dFW-qs-R5m" id="jg0-3S-Gxg"/>
                         <outlet property="btnLogOut" destination="Igx-UG-QY5" id="g3f-rb-4al"/>
+                        <outlet property="btnRateApp" destination="Jmy-ai-Zwk" id="B9v-Dg-Q37"/>
                         <outlet property="lblOwner" destination="f1e-XS-TbI" id="q1S-Ju-vPe"/>
                     </connections>
                 </viewController>
@@ -143,7 +166,7 @@
             <objects>
                 <viewController storyboardIdentifier="About" id="gVu-x3-vdM" customClass="AboutViewController" sceneMemberID="viewController">
                     <view key="view" tag="5" contentMode="scaleToFill" id="RhV-Un-fre">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="Pbw-ck-ozz" customClass="UIToolbarNoLogo">
@@ -330,13 +353,13 @@
             <objects>
                 <viewController storyboardIdentifier="History" id="Jl5-rV-Q0p" customClass="HistoryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lfO-nI-NnV">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="d12-mW-JNH">
                                 <color key="color" white="0.1026459854" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AIe-LK-pQR">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AIe-LK-pQR" customClass="BorderedTableView">
                                 <color key="backgroundColor" red="0.28627452250000002" green="0.28627452250000002" blue="0.28627452250000002" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="separatorColor" white="0.1026459854" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -376,11 +399,11 @@
                                         </view>
                                         <color key="backgroundColor" white="0.1026459854" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Uj8-qe-djo" firstAttribute="leading" secondItem="bqB-tV-TjZ" secondAttribute="leading" constant="269" id="2LL-T2-LjS"/>
                                             <constraint firstItem="Uj8-qe-djo" firstAttribute="top" secondItem="bqB-tV-TjZ" secondAttribute="top" constant="1" id="7tK-RP-XWI"/>
-                                            <constraint firstAttribute="trailing" secondItem="w0B-3d-sNq" secondAttribute="trailing" constant="53" id="Ky1-lf-gR2"/>
+                                            <constraint firstAttribute="trailing" secondItem="w0B-3d-sNq" secondAttribute="trailing" constant="56" id="A4V-K8-yeY"/>
+                                            <constraint firstItem="Uj8-qe-djo" firstAttribute="leading" secondItem="bqB-tV-TjZ" secondAttribute="leading" constant="266" id="L4B-dU-q6F"/>
                                             <constraint firstItem="7Da-ni-pdh" firstAttribute="leading" secondItem="bqB-tV-TjZ" secondAttribute="leading" constant="10" id="TfS-qf-jRX"/>
-                                            <constraint firstItem="w0B-3d-sNq" firstAttribute="top" secondItem="bqB-tV-TjZ" secondAttribute="top" constant="8" id="f3g-U4-VTJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="w0B-3d-sNq" secondAttribute="bottom" constant="20" type="default" id="s0j-vH-5Dx"/>
                                             <constraint firstItem="7Da-ni-pdh" firstAttribute="centerY" secondItem="bqB-tV-TjZ" secondAttribute="centerY" type="default" id="tcp-QZ-LVO"/>
                                         </constraints>
                                         <connections>
@@ -465,7 +488,7 @@
             <objects>
                 <viewController id="bbB-7o-GL7" customClass="LogInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g77-Qk-nJn" customClass="UIViewBlack">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="op8-Z0-CEc" customClass="FloatingView">
@@ -495,25 +518,15 @@
                                             <action selector="logIn" destination="bbB-7o-GL7" eventType="touchUpInside" id="lxC-YL-5w0"/>
                                         </connections>
                                     </button>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="É necessário alterar a password por favor aceda a www.alacard.pt para proceder à sua alteração." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="187" translatesAutoresizingMaskIntoConstraints="NO" id="A7Y-ZJ-fNw">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="187" id="OYH-Py-vo4"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.91764712329999998" green="0.91764712329999998" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstItem="jGy-LF-FN6" firstAttribute="leading" secondItem="A7Y-ZJ-fNw" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="BfN-xG-6hw"/>
                                     <constraint firstItem="qaE-Ld-1J6" firstAttribute="top" secondItem="op8-Z0-CEc" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Dzj-wm-49S"/>
                                     <constraint firstItem="ayq-zT-Ca0" firstAttribute="leading" secondItem="op8-Z0-CEc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EOi-gk-6at"/>
                                     <constraint firstItem="jGy-LF-FN6" firstAttribute="top" secondItem="ayq-zT-Ca0" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NXb-8L-gPh"/>
                                     <constraint firstItem="qaE-Ld-1J6" firstAttribute="leading" secondItem="op8-Z0-CEc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="RHS-lJ-uGS"/>
                                     <constraint firstAttribute="height" constant="145" type="user" id="U1O-Lq-hGv"/>
                                     <constraint firstItem="ayq-zT-Ca0" firstAttribute="top" secondItem="op8-Z0-CEc" secondAttribute="top" constant="51" id="WCl-Dy-kHC"/>
-                                    <constraint firstItem="A7Y-ZJ-fNw" firstAttribute="top" secondItem="ayq-zT-Ca0" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="agz-Dr-0X4"/>
                                     <constraint firstAttribute="trailing" secondItem="ayq-zT-Ca0" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="iwf-Ee-3CY"/>
                                     <constraint firstAttribute="trailing" secondItem="qaE-Ld-1J6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="n3v-51-9FS"/>
                                     <constraint firstAttribute="trailing" secondItem="jGy-LF-FN6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uzx-Ul-sCc"/>
@@ -550,7 +563,6 @@
                     </view>
                     <connections>
                         <outlet property="credentialsView" destination="op8-Z0-CEc" id="TBo-R5-nyn"/>
-                        <outlet property="lblFirstLogIn" destination="A7Y-ZJ-fNw" id="lOq-DI-fed"/>
                         <outlet property="txtCardNumber" destination="qaE-Ld-1J6" id="DWS-a4-kYt"/>
                         <outlet property="txtPassword" destination="ayq-zT-Ca0" id="iNJ-aH-iiz"/>
                     </connections>
@@ -564,7 +576,7 @@
             <objects>
                 <viewController id="2" customClass="iALaCardViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.91764712329999998" green="0.91764712329999998" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                     </view>
@@ -578,7 +590,7 @@
             <objects>
                 <viewController storyboardIdentifier="Account" id="YMA-Aa-Zlp" customClass="AccountViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="olr-rn-Xsg">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="eJf-1D-kDT" customClass="UIToolbarRightLogo">
@@ -1011,7 +1023,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="credentialsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="lblFirstLogIn" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="txtCardNumber" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
@@ -1027,10 +1038,12 @@
                 <relationship kind="action" name="pushAccount:" candidateClass="UIButton"/>
                 <relationship kind="action" name="pushHistory:" candidateClass="UIButton"/>
                 <relationship kind="action" name="pushLogOut:"/>
+                <relationship kind="action" name="pushRateApp:"/>
                 <relationship kind="outlet" name="btnAbout" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="btnAccount" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="btnHistory" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="btnLogOut" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnRateApp" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lblOwner" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1070,6 +1083,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

@@ -71,7 +71,7 @@
     NSString *sectionKey = [self.sections objectAtIndex:section];
     
     NSArray *transactionsInSection = [self.transactions.transactionsDictionary objectForKey:sectionKey];
-
+    
     return transactionsInSection.count;
 }
 
@@ -116,32 +116,33 @@
 -(IBAction) refresh
 {
     self.tableViewHistory.alpha = self.lblLastRefreshView.alpha = 0.05;
-    
-    [self.spinner startAnimating];
-    dispatch_queue_t fetchQ = dispatch_queue_create("fetcher", NULL);
-    dispatch_async(fetchQ, ^{
-        self.transactions = [aLaCardManager sharedALaCardManager].transactions;
-        NSArray * keys = [self.transactions.transactionsDictionary allKeys];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:FALSE];
-        self.sections = [keys sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableViewHistory reloadData];
-            [self reloadAnimated];
-            
-            [self.spinner stopAnimating];
+    if(!self.spinner.isAnimating) //already refreshing
+    {
+        [self.spinner startAnimating];
+        dispatch_async([aLaCardManager sharedQueue], ^{
+            self.transactions = [aLaCardManager sharedALaCardManager].transactions;
+            NSArray * keys = [self.transactions.transactionsDictionary allKeys];
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:FALSE];
+            self.sections = [keys sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableViewHistory reloadData];
+                [self reloadAnimated];
+                
+                [self.spinner stopAnimating];
+            });
         });
-    });
+    }
 }
 
 - (void) reloadAnimated
 {
     [UIView animateWithDuration:2.0 animations:^{
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:UPDATE_LABEL_FORMAT];
-    
-    self.lblLastRefresh.text = [dateFormatter stringFromDate:self.transactions.lastRefreshDate];
-    self.tableViewHistory.alpha = 1.0;
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:UPDATE_LABEL_FORMAT];
+        
+        self.lblLastRefresh.text = [dateFormatter stringFromDate:self.transactions.lastRefreshDate];
+        self.tableViewHistory.alpha = 1.0;
         self.lblLastRefreshView.alpha = 1.0;
     }];
 }

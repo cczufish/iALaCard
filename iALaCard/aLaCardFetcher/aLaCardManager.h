@@ -18,4 +18,5 @@
 @property (nonatomic, strong) Transactions *transactions;
 - (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password error:(NSError **) error;
 - (void) refreshLogIn;
++ (dispatch_queue_t)sharedQueue;
 @end

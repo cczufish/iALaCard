@@ -37,7 +37,7 @@
 - (IBAction)startup
 {
     [aLaCardManager sharedALaCardManager];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME bundle:nil];
     self.topViewController = [storyboard instantiateViewControllerWithIdentifier:ACCOUNT_CONTROLLER];
     
     [self.controls setObject:self.topViewController forKey:ACCOUNT_CONTROLLER];

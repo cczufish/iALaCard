@@ -10,7 +10,7 @@
 
 @interface aLaCardManager()
 
-@property (nonatomic, assign) BOOL working;
+@property (nonatomic, assign) BOOL workingLogin;
 
 @end
 
@@ -62,6 +62,7 @@
             if(![[NSUserDefaults standardUserDefaults] objectForKey:CARD_OWNER_KEY])
             {
                 [[NSUserDefaults standardUserDefaults] setObject:account.owner forKey:CARD_OWNER_KEY];
+                [[NSUserDefaults standardUserDefaults] setObject:account.refreshDate forKey: LAST_REFRESH_DATE_KEY];
             }
         }
         return  YES;
@@ -107,11 +108,11 @@
 {
     NSString *cardnumber = [[NSUserDefaults standardUserDefaults] stringForKey:CARD_NUMBER_KEY];
     BOOL refreshStatus = YES;
-    if(!self.working)
+    if(!self.workingLogin)
     {
-        self.working = YES;
+        self.workingLogin = YES;
         refreshStatus = [self logIn:cardnumber andPassword:[SFHFKeychainUtils getPasswordForUsername:cardnumber andServiceName:KEYCHAIN_SERVICE error:nil] error:nil];
-        self.working = NO;
+        self.workingLogin = NO;
     }
     
     if(!refreshStatus)
@@ -120,5 +121,21 @@
             [SVProgressHUD showImage:NULL status: CONNECTION_ERROR];
         });
     }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:self.account.refreshDate forKey: LAST_REFRESH_DATE_KEY];
+    }
+}
+
++ (dispatch_queue_t) sharedQueue
+{
+    static dispatch_once_t pred;
+    static dispatch_queue_t sharedDispatchQueue;
+    
+    dispatch_once(&pred, ^{
+        sharedDispatchQueue = dispatch_queue_create("theSharedQueue", NULL);
+    });
+    
+    return sharedDispatchQueue;
 }
 @end

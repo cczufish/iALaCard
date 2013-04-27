@@ -31,8 +31,12 @@
     
     [self fillDictionary:transactions withNodes:nodes];
     
+    NSMutableArray *array = [[NSMutableArray alloc]initWithArray:[transactions allKeys]];
     
-    for (NSString *key in [transactions allKeys]) {
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:FALSE];
+    [array sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    for (NSString *key in array) {
         
         Transaction *transaction = [Transaction transactionWithArray:[transactions objectForKey:key]];
         

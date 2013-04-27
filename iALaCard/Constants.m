@@ -8,6 +8,7 @@
 
 #import "Constants.h"
 
+NSString *const STORYBOARD_NAME = @"iPhone";
 NSString *const ACCOUNT_CONTROLLER = @"Account";
 NSString *const ABOUT_CONTROLLER = @"About";
 NSString *const HISTORY_CONTROLLER = @"History";
@@ -42,12 +43,14 @@ NSString *const LOG_IN_ERROR_MSG = @"Os campos número de cartão e código de a
 NSString *const OK_BUTTON = @"OK";
 NSString *const CONNECTION_ERROR = @"erro de ligação";
 NSString *const CONNECTION_LOST = @"ligação perdida";
-NSString *const CONNECTION_OK = @"ligação restabelecida";
+NSString *const FIRST_LOG_IN_TITLE = @"Alteração de password";
+NSString *const FIRST_LOG_IN_MSG = @"É necessário alterar a password por favor aceda a www.alacard.pt para proceder à sua alteração.";
 
 NSString *const COUNTRY = @"pt_PT";
 NSString *const UPDATE_LABEL_FORMAT = @"dd/MM/yyyy HH:mm:ss";
 
 NSString *const SECTION_DATE_FORMAT = @"dd MMM, yyyy";
+NSString *const LAST_REFRESH_DATE_KEY = @"LAST_REFRESH_DATE_KEY";
 @implementation Constants
 
 @end

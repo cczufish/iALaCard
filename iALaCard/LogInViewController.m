@@ -12,7 +12,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *txtPassword;
 @property (strong, nonatomic) IBOutlet UIView *credentialsView;
 @property (strong, nonatomic) IBOutlet UITextField *txtCardNumber;
-@property (strong, nonatomic) IBOutlet UILabel *lblFirstLogIn;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @end
 
@@ -22,19 +21,15 @@
 
 - (IBAction)logIn
 {
-    self.lblFirstLogIn.hidden = YES;
-    
     if([self validInputs])
     {
         [SVProgressHUD showWithStatus: WAIT_LOG_IN_MSG maskType:SVProgressHUDMaskTypeGradient];
         
         [self.txtCardNumber resignFirstResponder];
         
-        dispatch_queue_t loginQ = dispatch_queue_create("fetcher", NULL);
-        
         NSString *txtCardNumber = self.txtCardNumber.text;
         NSString *txtPassword = self.txtPassword.text;
-        dispatch_async(loginQ, ^{
+        dispatch_async([aLaCardManager sharedQueue], ^{
             NSError *error;
             BOOL logIn = [[aLaCardManager sharedALaCardManager] logIn:txtCardNumber andPassword:txtPassword error:&error];
             
@@ -59,7 +54,10 @@
                 {
                     if(error) //first time log in error
                     {
-                        self.lblFirstLogIn.hidden = NO;
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FIRST_LOG_IN_TITLE message:FIRST_LOG_IN_MSG delegate:self cancelButtonTitle:OK_BUTTON otherButtonTitles:nil]
+                        ;
+                        [alert show];
                     }
                     
                     [SVProgressHUD showErrorWithStatus:LOG_IN_NOTOK];
@@ -93,9 +91,17 @@
     
     [self.txtCardNumber becomeFirstResponder];
     
-    //debug
+    //debug mine
 //    self.txtCardNumber.text = @"4246610400911733";
 //    self.txtPassword.text = @"638638";
+    
+//    self.txtCardNumber.text = @"4246610401479235";
+//    self.txtPassword.text = @"513513";
+    
+//        self.txtCardNumber.text = @"4246610402265609";
+//        self.txtPassword.text = @"987654";
+//    
+    
 //    
     self.txtPassword.secureTextEntry = YES;
     self.txtPassword.keyboardType = UIKeyboardTypeNumberPad;

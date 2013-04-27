@@ -13,10 +13,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnHistory;
 @property (strong, nonatomic) IBOutlet UIButton *btnLogOut;
 @property (strong, nonatomic) IBOutlet UIButton *btnAbout;
+@property (strong, nonatomic) IBOutlet UIButton *btnRateApp;
+
 @property (strong, nonatomic) IBOutlet UILabel *lblOwner;
-
 @property (strong, nonatomic) UIButton *selectedButton;
-
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @end
 
@@ -51,7 +51,7 @@
 {
     [super viewDidAppear:animated];
     
-    self.btnAccount.alpha = self.btnHistory.alpha = self.btnLogOut.alpha = self.btnAbout.alpha = 0.0;
+    self.btnAccount.alpha = self.btnHistory.alpha = self.btnLogOut.alpha = self.btnAbout.alpha = self.btnRateApp.alpha = 0.0;
     self.lblOwner.text = [[NSUserDefaults standardUserDefaults] objectForKey:CARD_OWNER_KEY];
     [self pushButtons];
 }
@@ -73,7 +73,11 @@
                     } completion:^(BOOL finished) {
                         if(finished){
                             [UIView animateWithDuration:ANIMATION animations:^{
-                                self.btnLogOut.alpha = 1.0;
+                                self.btnRateApp.alpha = 1.0;
+                            } completion:^(BOOL finished) {
+                                [UIView animateWithDuration:ANIMATION animations:^{
+                                    self.btnLogOut.alpha = 1.0;
+                                }];
                             }];
                         }
                     }];
@@ -89,11 +93,12 @@
 {
     if(buttonIndex == self.actionSheet.destructiveButtonIndex)
     {
-        dispatch_async(dispatch_queue_create("fetcher", NULL), ^{[aLaCardFetcher logOut];});
+        dispatch_async([aLaCardManager sharedQueue], ^{[aLaCardFetcher logOut];});
         
         //delete user defaults
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:CARD_NUMBER_KEY];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:CARD_OWNER_KEY];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:LAST_REFRESH_DATE_KEY];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:LOG_OFF object:self userInfo:nil];
         
@@ -147,6 +152,15 @@
 {
     [self.actionSheet showInView:self.view];
 }
+
+- (IBAction)pushRateApp:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=445279808&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
+    
+    [self toggleButton:self.btnAccount];
+    [self navigateTo:ACCOUNT_CONTROLLER];
+}
+
 
 
 @end
