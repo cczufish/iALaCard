@@ -10,11 +10,19 @@
 #import "aLaCardManager+Shared.h"
 #import "Constants.h"
 
+#define MAX_TIME_BETWEEN 60
+
 @implementation iALaCardAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    if([[NSUserDefaults standardUserDefaults] objectForKey:CARD_NUMBER_KEY2] == nil && [[NSUserDefaults standardUserDefaults] objectForKey:CARD_NUMBER_KEY] != nil)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:[[NSUserDefaults standardUserDefaults] objectForKey:CARD_NUMBER_KEY] forKey:CARD_NUMBER_KEY2];
+    }
+    
     return YES;
 }
 
@@ -29,7 +37,12 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to tate in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.restore your application to its current s
     
-    self.window.alpha = 0;
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+//    if(MAX_TIME_BETWEEN > 0)
+//    {
+//        self.window.alpha = 0;
+//    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -42,8 +55,22 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
+    
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//    if(MAX_TIME_BETWEEN > 0)
+//    {
+//        [self smartLogIn];
+//    }
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void) smartLogIn
+{
     int timeBetween = 0;
     
     NSDate *lastAccountRefresh = [[NSUserDefaults standardUserDefaults] objectForKey:LAST_REFRESH_DATE_KEY];
@@ -55,14 +82,12 @@
         
         timeBetween = minNow - minAccount;
     }
-    else
-    {
-        timeBetween = 60;
-    }
     
-    if(timeBetween >= 60)
+    if(timeBetween >= MAX_TIME_BETWEEN)
     {
-        UIImageView *splash = [[UIImageView alloc] initWithImage:[UIImage imageNamed:(IS_IPHONE_5)? @"Default-568h.png" : @"Default.png"]];
+        UIImageView *splash = [[UIImageView alloc] initWithImage:[UIImage imageNamed:(IS_IPHONE_5)? SPLASH_I5 : SPLASH_I4]];
+        
+        splash.frame = self.window.frame;
         
         [self.window.rootViewController.view addSubview:splash];
         
@@ -75,11 +100,6 @@
                          }];
     }
     self.window.alpha = 1;
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
 @end

@@ -10,7 +10,7 @@
 
 @interface Transaction : NSObject
 
-@property (nonatomic, strong) NSString * transactionId;
+@property (nonatomic, strong) NSNumber * transactionId;
 @property (nonatomic, strong) NSString * transactionDescription;
 @property (nonatomic, strong) NSDate * date;
 @property (nonatomic, strong) NSString * debit;

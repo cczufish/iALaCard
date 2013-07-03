@@ -13,10 +13,13 @@
 #import "Transactions.h"
 #import "SVProgressHUD.h"
 #import "Constants.h"
+#import "TWStatus.h"
+
 @interface aLaCardManager : NSObject
 @property (nonatomic, strong) Account *account;
 @property (nonatomic, strong) Transactions *transactions;
 - (BOOL) logIn:(NSString *) cardNumber andPassword:(NSString *) password error:(NSError **) error;
-- (void) refreshLogIn;
+- (BOOL) refreshLogInError: (NSError **) error;
 + (dispatch_queue_t)sharedQueue;
+- (void) logOut;
 @end

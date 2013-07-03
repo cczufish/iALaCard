@@ -10,6 +10,9 @@
 #import "TFHpple.h"
 #import "Constants.h"
 #import "SFHFKeychainUtils.h"
+#import "iALaCardConnection+Shared.h"
+#import "OldConnection.h"
+
 @interface aLaCardFetcher : NSObject
 + (TFHpple *) account;
 + (TFHpple *) transactions;

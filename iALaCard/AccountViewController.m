@@ -125,6 +125,11 @@
         
     }
     
+//    self.lblOwner.text = @"JOHN DOE";
+//    self.lblNumber.text = @"123456789012";
+//    self.lblCVV2.text = @"123";
+    
+    
     [self.spinner stopAnimating];
 }
 
@@ -137,9 +142,18 @@
         [self.spinner startAnimating];
         self.recentTransactionsView.alpha = self.lblBalance.alpha = self.lblBalanceCurrent.alpha = self.lblLastRefreshView.alpha = TRANSPARENT;
         dispatch_async([aLaCardManager sharedQueue], ^{
-            [[aLaCardManager sharedALaCardManager] refreshLogIn];
+            NSError *error;
+            [[aLaCardManager sharedALaCardManager] refreshLogInError:&error];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self refresh];
+                if(!error)
+                {
+                    [self refresh];
+                }else if(error.code == PASSWORD_CHANGED_CODE)
+                {
+                    [[aLaCardManager sharedALaCardManager] logOut];
+                    
+                    [self performSegueWithIdentifier:LOGIN_SEGUE sender:nil];
+                }
             });
         });
         }

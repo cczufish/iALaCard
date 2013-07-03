@@ -7,7 +7,10 @@
 //
 
 #import "aLaCardManager.h"
+#import "iALaCardConnection.h"
 
 @interface aLaCardManager (Shared)
+
 + (aLaCardManager *) sharedALaCardManager;
+
 @end

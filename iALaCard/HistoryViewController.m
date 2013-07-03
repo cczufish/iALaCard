@@ -100,7 +100,7 @@
     TableSectionView *tableViewSection =  [[TableSectionView alloc]init];
     
     UILabel* headerLabel = [[UILabel alloc] init];
-    headerLabel.frame = CGRectMake(10, 0, 300, 23);
+    headerLabel.frame = CGRectMake(10, 0, 300, 23); //magic numbers
     headerLabel.backgroundColor = [UIColor clearColor];
     headerLabel.textColor = [UIColor colorWithRed:COLOR green:COLOR blue:COLOR alpha:1];
     

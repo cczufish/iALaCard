@@ -80,14 +80,17 @@
 + (Transaction *) transactionWithArray: (NSArray *) array
 {
     Transaction *transaction = [[Transaction alloc] init];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     NSLocale *ptLocale = [[NSLocale alloc] initWithLocaleIdentifier:COUNTRY];
     [dateFormat setLocale:ptLocale];
     
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterNoStyle];
+    
     [dateFormat setDateFormat:DATE_FORMAT];
     transaction.date = [dateFormat dateFromString:[array[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-    transaction.transactionId = [array[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    transaction.transactionId = [f numberFromString:[array[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     transaction.transactionType = [array[2] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     transaction.transactionDescription = [array[3] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     transaction.debit = [array[4] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

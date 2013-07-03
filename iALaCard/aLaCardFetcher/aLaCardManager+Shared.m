@@ -8,14 +8,19 @@
 
 #import "aLaCardManager+Shared.h"
 
+#import "OldConnection.h"
+#import "EuroCardConnection.h"
+
 @implementation aLaCardManager (Shared)
 + (aLaCardManager *) sharedALaCardManager
 {
-    static aLaCardManager *shared = nil;
+    static aLaCardManager *shared;
+    static dispatch_once_t pred;
     
-    if(!shared){
+    dispatch_once(&pred, ^{
         shared = [[aLaCardManager alloc]init];
-    }
+    });
+    
     return shared;
 }
 

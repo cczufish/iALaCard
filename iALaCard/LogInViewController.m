@@ -29,6 +29,8 @@
         
         NSString *txtCardNumber = self.txtCardNumber.text;
         NSString *txtPassword = self.txtPassword.text;
+        
+        [iALaCardConnection resetToOld];
         dispatch_async([aLaCardManager sharedQueue], ^{
             NSError *error;
             BOOL logIn = [[aLaCardManager sharedALaCardManager] logIn:txtCardNumber andPassword:txtPassword error:&error];
@@ -38,6 +40,7 @@
                 if(logIn){
                     [SVProgressHUD showSuccessWithStatus:LOG_IN_OK];
                     [[NSUserDefaults standardUserDefaults] setObject:self.txtCardNumber.text forKey:CARD_NUMBER_KEY];
+                    [[NSUserDefaults standardUserDefaults] setObject:self.txtCardNumber.text forKey:CARD_NUMBER_KEY2];
                     
                     [SFHFKeychainUtils storeUsername:self.txtCardNumber.text
                                          andPassword:self.txtPassword.text
@@ -55,7 +58,11 @@
                     if(error) //first time log in error
                     {
                         
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FIRST_LOG_IN_TITLE message:FIRST_LOG_IN_MSG delegate:self cancelButtonTitle:OK_BUTTON otherButtonTitles:nil]
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FIRST_LOG_IN_TITLE
+                                                                        message:[NSString stringWithFormat: FIRST_LOG_IN_MSG, [iALaCardConnection sharedALaCardConnectionManager].baseURL]
+                                                                       delegate:self
+                                                              cancelButtonTitle:OK_BUTTON
+                                                              otherButtonTitles:nil]
                         ;
                         [alert show];
                     }
@@ -89,8 +96,8 @@
     [super viewDidLoad];
     self.credentialsView.alpha = 0;
     
-    [self.txtCardNumber becomeFirstResponder];
-    
+    self.txtCardNumber.delegate = self;
+    self.txtPassword.delegate = self;
     //debug mine
 //    self.txtCardNumber.text = @"4246610400911733";
 //    self.txtPassword.text = @"638638";
@@ -101,8 +108,13 @@
 //        self.txtCardNumber.text = @"4246610402265609";
 //        self.txtPassword.text = @"987654";
 //    
+    self.txtCardNumber.text = [[NSUserDefaults standardUserDefaults] objectForKey:CARD_NUMBER_KEY2];
     
-//    
+    if(self.txtCardNumber.text.length == 0){
+        [self.txtCardNumber becomeFirstResponder];
+    }else{
+        [self.txtPassword becomeFirstResponder];
+    }
     self.txtPassword.secureTextEntry = YES;
     self.txtPassword.keyboardType = UIKeyboardTypeNumberPad;
     self.txtCardNumber.keyboardType = UIKeyboardTypeNumberPad;
@@ -120,6 +132,22 @@
     self.credentialsView.alpha = 0;
 }
 
+#define MAX_LENGTH_USER 16
+#define MAX_LENGTH_PASSWORD 6
 
+- (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    NSUInteger oldLength = [textField.text length];
+    NSUInteger replacementLength = [string length];
+    NSUInteger rangeLength = range.length;
+    
+    NSUInteger newLength = oldLength - rangeLength + replacementLength;
+    
+    BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+    
+    NSUInteger max = textField == self.txtPassword ? MAX_LENGTH_PASSWORD : MAX_LENGTH_USER;
+    
+    return newLength <= max || returnKey;
+}
 
 @end

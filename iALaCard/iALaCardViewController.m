@@ -32,6 +32,16 @@
     [self startup];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+}
+
+- (void) viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+}
+
 //startup operations
 //initializes all controlls for the application and stores them in the dict
 - (IBAction)startup

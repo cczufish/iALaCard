@@ -12,6 +12,6 @@
 #import "SVProgressHUD.h"
 #import "Constants.h"
 #import "aLaCardManager+Shared.h"
-@interface LogInViewController : UIViewController
+@interface LogInViewController : UIViewController <UITextFieldDelegate>
 
 @end

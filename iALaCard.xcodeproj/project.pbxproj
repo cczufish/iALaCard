@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3102EC1A176E1E2C00BEEDB1 /* TWStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3102EC19176E1DC700BEEDB1 /* TWStatus.m */; };
 		3112BEEC170CD66500C07C06 /* barra_verde.png in Resources */ = {isa = PBXBuildFile; fileRef = 3112BEEB170CD66500C07C06 /* barra_verde.png */; };
 		3112BEF3170CD81F00C07C06 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3112BEF2170CD81F00C07C06 /* logo.png */; };
 		3112BEFC170CDD0300C07C06 /* bolinha_verde.png in Resources */ = {isa = PBXBuildFile; fileRef = 3112BEF8170CDD0300C07C06 /* bolinha_verde.png */; };
@@ -17,6 +18,10 @@
 		31131B241711BFFB0025ACB4 /* logo_login_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31131B231711BFFB0025ACB4 /* logo_login_v1.png */; };
 		31131B2A1711C22E0025ACB4 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31131B291711C22D0025ACB4 /* HistoryViewController.m */; };
 		31131B2E1711D0180025ACB4 /* Transactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 31131B2D1711D0180025ACB4 /* Transactions.m */; };
+		31403D631784A9090063F125 /* iALaCardConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 31403D621784A9090063F125 /* iALaCardConnection.m */; };
+		31403D661784AB540063F125 /* OldConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 31403D651784AB540063F125 /* OldConnection.m */; };
+		31403D691784ADD80063F125 /* EuroCardConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 31403D681784ADD80063F125 /* EuroCardConnection.m */; };
+		31403D6E1784B2470063F125 /* iALaCardConnection+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 31403D6D1784B2470063F125 /* iALaCardConnection+Shared.m */; };
 		314903811715891500CD4CA6 /* botao_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 314903801715891500CD4CA6 /* botao_v1.png */; };
 		314903831715891900CD4CA6 /* botao_v1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 314903821715891900CD4CA6 /* botao_v1@2x.png */; };
 		3173FA7A171499B2002779B1 /* barra_verde_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173FA79171499B2002779B1 /* barra_verde_v1.png */; };
@@ -103,6 +108,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3102EC18176E1DC700BEEDB1 /* TWStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWStatus.h; sourceTree = "<group>"; };
+		3102EC19176E1DC700BEEDB1 /* TWStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TWStatus.m; sourceTree = "<group>"; };
 		3112BEEB170CD66500C07C06 /* barra_verde.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barra_verde.png; sourceTree = "<group>"; };
 		3112BEF2170CD81F00C07C06 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		3112BEF8170CDD0300C07C06 /* bolinha_verde.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bolinha_verde.png; sourceTree = "<group>"; };
@@ -115,6 +122,14 @@
 		31131B291711C22D0025ACB4 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		31131B2C1711D0180025ACB4 /* Transactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transactions.h; path = Model/Transactions.h; sourceTree = "<group>"; };
 		31131B2D1711D0180025ACB4 /* Transactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Transactions.m; path = Model/Transactions.m; sourceTree = "<group>"; };
+		31403D611784A9090063F125 /* iALaCardConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iALaCardConnection.h; sourceTree = "<group>"; };
+		31403D621784A9090063F125 /* iALaCardConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iALaCardConnection.m; sourceTree = "<group>"; };
+		31403D641784AB540063F125 /* OldConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldConnection.h; sourceTree = "<group>"; };
+		31403D651784AB540063F125 /* OldConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldConnection.m; sourceTree = "<group>"; };
+		31403D671784ADD80063F125 /* EuroCardConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EuroCardConnection.h; sourceTree = "<group>"; };
+		31403D681784ADD80063F125 /* EuroCardConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EuroCardConnection.m; sourceTree = "<group>"; };
+		31403D6C1784B2470063F125 /* iALaCardConnection+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iALaCardConnection+Shared.h"; sourceTree = "<group>"; };
+		31403D6D1784B2470063F125 /* iALaCardConnection+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "iALaCardConnection+Shared.m"; sourceTree = "<group>"; };
 		314903801715891500CD4CA6 /* botao_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = botao_v1.png; path = ../botao_v1.png; sourceTree = "<group>"; };
 		314903821715891900CD4CA6 /* botao_v1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "botao_v1@2x.png"; path = "../botao_v1@2x.png"; sourceTree = "<group>"; };
 		3173FA79171499B2002779B1 /* barra_verde_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barra_verde_v1.png; sourceTree = "<group>"; };
@@ -251,6 +266,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3102EC17176E1DC700BEEDB1 /* TWStatus */ = {
+			isa = PBXGroup;
+			children = (
+				3102EC18176E1DC700BEEDB1 /* TWStatus.h */,
+				3102EC19176E1DC700BEEDB1 /* TWStatus.m */,
+			);
+			path = TWStatus;
+			sourceTree = "<group>";
+		};
 		31131B2B1711CFEA0025ACB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +421,7 @@
 				31131B2B1711CFEA0025ACB4 /* Model */,
 				31EC2A7116FF79CC00E11411 /* aLaCardFetcher */,
 				31EC2A6416FF5BB900E11411 /* Security */,
+				3102EC17176E1DC700BEEDB1 /* TWStatus */,
 				31982B61170249D600A52257 /* SVProgressHUD */,
 				31EBEEAA16FD0BAA0029BE35 /* Supporting Files */,
 			);
@@ -477,6 +502,14 @@
 				31E8623F17077CAB007911B3 /* aLaCardManager.m */,
 				31E8624117077D1A007911B3 /* aLaCardManager+Shared.h */,
 				31E8624217077D1A007911B3 /* aLaCardManager+Shared.m */,
+				31403D611784A9090063F125 /* iALaCardConnection.h */,
+				31403D621784A9090063F125 /* iALaCardConnection.m */,
+				31403D641784AB540063F125 /* OldConnection.h */,
+				31403D651784AB540063F125 /* OldConnection.m */,
+				31403D671784ADD80063F125 /* EuroCardConnection.h */,
+				31403D681784ADD80063F125 /* EuroCardConnection.m */,
+				31403D6C1784B2470063F125 /* iALaCardConnection+Shared.h */,
+				31403D6D1784B2470063F125 /* iALaCardConnection+Shared.m */,
 			);
 			path = aLaCardFetcher;
 			sourceTree = "<group>";
@@ -596,6 +629,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3102EC1A176E1E2C00BEEDB1 /* TWStatus.m in Sources */,
 				31EBEEB016FD0BAA0029BE35 /* main.m in Sources */,
 				31EBEEB416FD0BAA0029BE35 /* iALaCardAppDelegate.m in Sources */,
 				31EBEEC016FD0BAA0029BE35 /* iALaCardViewController.m in Sources */,
@@ -629,6 +663,10 @@
 				3173FAA81714C5FC002779B1 /* UIToolbarRightLogo.m in Sources */,
 				3173FAAB1714C645002779B1 /* UIToolbarLeftLogo.m in Sources */,
 				3173FAAE1714C6A0002779B1 /* UIViewBlack.m in Sources */,
+				31403D631784A9090063F125 /* iALaCardConnection.m in Sources */,
+				31403D661784AB540063F125 /* OldConnection.m in Sources */,
+				31403D691784ADD80063F125 /* EuroCardConnection.m in Sources */,
+				31403D6E1784B2470063F125 /* iALaCardConnection+Shared.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,8 +704,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rodolfo Torres";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rodolfo Torres (XZC74FKFWJ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -682,7 +720,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "534C4906-5D19-4766-B947-153D1424BC09";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -700,7 +738,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rodolfo Torres";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -708,7 +746,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "534C4906-5D19-4766-B947-153D1424BC09";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -718,14 +756,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rodolfo Torres (XZC74FKFWJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iALaCard/iALaCard-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "iALaCard/iALaCard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EB9F3FCB-6B43-45F0-82FA-FAA6F2435CD0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "99094D7D-8CB4-49A1-9769-F86751D1CA91";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -739,6 +778,7 @@
 				GCC_PREFIX_HEADER = "iALaCard/iALaCard-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "iALaCard/iALaCard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
