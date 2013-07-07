@@ -57,9 +57,4 @@
     return SUBMIT;
 }
 
-- (NSString *) baseURL
-{
-    return URL;
-}
-
 @end

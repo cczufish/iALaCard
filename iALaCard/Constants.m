@@ -48,7 +48,7 @@ NSString *const CONNECTION_ERROR = @"erro de ligação";
 NSString *const PASSWORD_CHANGED_ERROR = @"código de acesso errado";
 NSString *const FIRST_LOG_IN_TITLE = @"Dados incorrectos";
 
-NSString *const FIRST_LOG_IN_MSG = @"Por favor aceda a %@ para verificar as suas credenciais.";
+NSString *const FIRST_LOG_IN_MSG = @"Por favor aceda %@ para verificar as suas credenciais.";
 NSString *const ACCOUNT_REFRESH_MSG = @"actualizar dados do cartão";
 NSString *const HISTORY_REFRESH_MSG = @"actualizar movimentos";
 

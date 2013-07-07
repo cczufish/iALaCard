@@ -24,10 +24,11 @@
 
 - (NSString *) loginSubmit {return NULL;}
 
-- (NSString *) baseURL {return NULL;}
+- (NSString *) baseURL {return @"ao site do alacard";}
 
 - (BOOL) accountHasChanged:(NSString *)rawPage
 {
-    return([rawPage rangeOfString:@"Euroticket"].location != NSNotFound);
+    return([rawPage rangeOfString:@"Euroticket"].location != NSNotFound || [rawPage rangeOfString:@"Tente novamente!"].location != NSNotFound);
 }
+
 @end

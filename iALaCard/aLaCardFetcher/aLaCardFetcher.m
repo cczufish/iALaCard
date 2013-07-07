@@ -103,6 +103,7 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         
+        
         NSString *aStr = [[NSString alloc] initWithData:result encoding:NSASCIIStringEncoding];
         
         if([[iALaCardConnection sharedALaCardConnectionManager] accountHasChanged:aStr] && [[iALaCardConnection sharedALaCardConnectionManager] isKindOfClass:[OldConnection class]])

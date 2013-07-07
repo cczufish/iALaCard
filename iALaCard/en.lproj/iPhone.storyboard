@@ -960,6 +960,109 @@
         <image name="texto_movimentos_v2.png" width="188" height="28"/>
         <image name="texto_saldos_v2.png" width="107" height="28"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="iALaCardBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="call:"/>
+                <relationship kind="action" name="sendEmail:"/>
+            </relationships>
+        </class>
+        <class className="AccountViewController" superclassName="iALaCardBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lblBalance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblBalanceCurrent" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblCVV2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblExpirationDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblLastRefreshDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblLastRefreshView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="lblNoTransactions" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblNumber" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblOwner" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recentTransactionsView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="BorderedTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BorderedTableView.h"/>
+        </class>
+        <class className="ECSlidingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSlidingViewController.h"/>
+        </class>
+        <class className="FloatingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FloatingView.h"/>
+        </class>
+        <class className="HistoryViewController" superclassName="iALaCardBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lblLastRefresh" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblLastRefreshView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="tableViewHistory" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LogInViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="credentialsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="txtCardNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="OptionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pushAbout:" candidateClass="UIButton"/>
+                <relationship kind="action" name="pushAccount:" candidateClass="UIButton"/>
+                <relationship kind="action" name="pushHistory:" candidateClass="UIButton"/>
+                <relationship kind="action" name="pushLogOut:"/>
+                <relationship kind="action" name="pushRateApp:"/>
+                <relationship kind="outlet" name="btnAbout" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnAccount" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnHistory" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnLogOut" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnRateApp" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lblOwner" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TransactionTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TransactionTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lblTransactionDetail" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="transactionImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="UILabelLastRefresh" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UILabelLastRefresh.h"/>
+        </class>
+        <class className="UIToolbarLeftLogo" superclassName="UIToolbar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIToolbarLeftLogo.h"/>
+        </class>
+        <class className="UIToolbarNoLogo" superclassName="UIToolbar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIToolbarNoLogo.h"/>
+        </class>
+        <class className="UIToolbarRightLogo" superclassName="UIToolbar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIToolbarRightLogo.h"/>
+        </class>
+        <class className="UIViewBlack" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIViewBlack.h"/>
+        </class>
+        <class className="iALaCardBaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iALaCardBaseViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ShowOptions:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="iALaCardViewController" superclassName="ECSlidingViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iALaCardViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
