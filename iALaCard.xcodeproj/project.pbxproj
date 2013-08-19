@@ -40,6 +40,9 @@
 		3173FAA81714C5FC002779B1 /* UIToolbarRightLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3173FAA71714C5FB002779B1 /* UIToolbarRightLogo.m */; };
 		3173FAAB1714C645002779B1 /* UIToolbarLeftLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3173FAAA1714C644002779B1 /* UIToolbarLeftLogo.m */; };
 		3173FAAE1714C6A0002779B1 /* UIViewBlack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3173FAAD1714C6A0002779B1 /* UIViewBlack.m */; };
+		318C0B461793657F000457E3 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C0B451793657F000457E3 /* Appirater.m */; };
+		318C0B48179365F2000457E3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 318C0B47179365F2000457E3 /* CFNetwork.framework */; };
+		318C0B4A179365FB000457E3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 318C0B49179365FB000457E3 /* StoreKit.framework */; };
 		318DCB1317050DD300B9581D /* TransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 318DCB1217050DD300B9581D /* TransactionTableViewCell.m */; };
 		318DCB1617051E3100B9581D /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 318DCB1517051E3000B9581D /* Constants.m */; };
 		31982B6517024A4100A52257 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 31982B6217024A4100A52257 /* SVProgressHUD.bundle */; };
@@ -153,6 +156,10 @@
 		3173FAAA1714C644002779B1 /* UIToolbarLeftLogo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIToolbarLeftLogo.m; sourceTree = "<group>"; };
 		3173FAAC1714C69F002779B1 /* UIViewBlack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewBlack.h; sourceTree = "<group>"; };
 		3173FAAD1714C6A0002779B1 /* UIViewBlack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewBlack.m; sourceTree = "<group>"; };
+		318C0B441793657F000457E3 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = appirater/Appirater.h; sourceTree = "<group>"; };
+		318C0B451793657F000457E3 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = appirater/Appirater.m; sourceTree = "<group>"; };
+		318C0B47179365F2000457E3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		318C0B49179365FB000457E3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		318DCB1117050DD300B9581D /* TransactionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionTableViewCell.h; sourceTree = "<group>"; };
 		318DCB1217050DD300B9581D /* TransactionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionTableViewCell.m; sourceTree = "<group>"; };
 		318DCB1417051E3000B9581D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -253,6 +260,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				318C0B4A179365FB000457E3 /* StoreKit.framework in Frameworks */,
+				318C0B48179365F2000457E3 /* CFNetwork.framework in Frameworks */,
 				31EE061E171ADFAB0063601F /* SystemConfiguration.framework in Frameworks */,
 				31982B6817024A7700A52257 /* QuartzCore.framework in Frameworks */,
 				31EC2A7F16FF7A2E00E11411 /* libxml2.dylib in Frameworks */,
@@ -288,6 +297,15 @@
 				31131B2D1711D0180025ACB4 /* Transactions.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		318C0B4317936478000457E3 /* appirater */ = {
+			isa = PBXGroup;
+			children = (
+				318C0B441793657F000457E3 /* Appirater.h */,
+				318C0B451793657F000457E3 /* Appirater.m */,
+			);
+			name = appirater;
 			sourceTree = "<group>";
 		};
 		31982B61170249D600A52257 /* SVProgressHUD */ = {
@@ -385,6 +403,8 @@
 		31EBEE9716FD0BAA0029BE35 = {
 			isa = PBXGroup;
 			children = (
+				318C0B49179365FB000457E3 /* StoreKit.framework */,
+				318C0B47179365F2000457E3 /* CFNetwork.framework */,
 				31EBEEA916FD0BAA0029BE35 /* iALaCard */,
 				31EBEEA216FD0BAA0029BE35 /* Frameworks */,
 				31EBEEA116FD0BAA0029BE35 /* Products */,
@@ -422,6 +442,7 @@
 				31EC2A7116FF79CC00E11411 /* aLaCardFetcher */,
 				31EC2A6416FF5BB900E11411 /* Security */,
 				3102EC17176E1DC700BEEDB1 /* TWStatus */,
+				318C0B4317936478000457E3 /* appirater */,
 				31982B61170249D600A52257 /* SVProgressHUD */,
 				31EBEEAA16FD0BAA0029BE35 /* Supporting Files */,
 			);
@@ -667,6 +688,7 @@
 				31403D661784AB540063F125 /* OldConnection.m in Sources */,
 				31403D691784ADD80063F125 /* EuroCardConnection.m in Sources */,
 				31403D6E1784B2470063F125 /* iALaCardConnection+Shared.m in Sources */,
+				318C0B461793657F000457E3 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

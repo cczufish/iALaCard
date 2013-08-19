@@ -57,13 +57,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "iALaCard/Model/Account.m"
-         timestampString = "394905622.250208"
+         filePath = "iALaCard/aLaCardFetcher/aLaCardFetcher.m"
+         timestampString = "395531577.013856"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "66"
          endingLineNumber = "66"
-         landmarkName = "-initWithParser:"
+         landmarkName = "+logIn:andPassword:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -70,10 +70,18 @@
     NSData *logInHtmlData = [NSData dataWithContentsOfURL:logInUrl];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
+    //oldsite is often down, try the new one
     if(!logInHtmlData)
     {
         NSLog(@"network error: logInHtmlData NULL");
-        return NULL;
+        if([[iALaCardConnection sharedALaCardConnectionManager] isKindOfClass:[OldConnection class]])
+        {
+            [iALaCardConnection resetToEuroCard];
+            return [aLaCardFetcher logIn:cardNumber andPassword:password];            
+        }else{ //newsite is down reset
+            [iALaCardConnection resetToOld];
+            return NULL;
+        }
     }
     
     TFHpple *logInParser = [TFHpple hppleWithHTMLData:logInHtmlData];
