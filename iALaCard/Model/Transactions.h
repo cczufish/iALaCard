@@ -17,4 +17,5 @@
 @property (assign, nonatomic) BOOL needsRefresh;
 
 - (Transactions *) initWithParser:(TFHpple *) parser;
+- (Transactions *) initWithTransactions:(NSMutableArray *) trans;
 @end

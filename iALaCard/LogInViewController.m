@@ -98,9 +98,6 @@
     
     self.txtCardNumber.delegate = self;
     self.txtPassword.delegate = self;
-    //debug mine
-//    self.txtCardNumber.text = @"4246610400911733";
-//    self.txtPassword.text = @"638638";
     
 //    self.txtCardNumber.text = @"4246610401479235";
 //    self.txtPassword.text = @"513513";
@@ -115,6 +112,18 @@
     }else{
         [self.txtPassword becomeFirstResponder];
     }
+    
+    //debug mine
+//    self.txtCardNumber.text = @"4246610400911733";
+//    self.txtPassword.text = @"638638";
+    
+    //debug petinga
+//    self.txtCardNumber.text = @"4339660000041868";
+//    self.txtPassword.text = @"685685";
+    
+    
+    
+    
     self.txtPassword.secureTextEntry = YES;
     self.txtPassword.keyboardType = UIKeyboardTypeNumberPad;
     self.txtCardNumber.keyboardType = UIKeyboardTypeNumberPad;

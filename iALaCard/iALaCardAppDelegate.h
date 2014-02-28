@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Appirater.h"
 
 @interface iALaCardAppDelegate : UIResponder <UIApplicationDelegate>
 

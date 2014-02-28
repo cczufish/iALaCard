@@ -53,11 +53,11 @@
         return NO;
     }
     
-    NSString *action = [aLaCardFetcher action: rawLogin];
+//    NSString *action = [aLaCardFetcher action: rawLogin];
     
     
-    if([self LogInErrors:error action:action])
-    {
+//    if([self LogInErrors:error action:action])
+//    {
         if(rawLogin)
         {
             Account *account = [[Account alloc] initWithParser:rawLogin];
@@ -84,7 +84,7 @@
                 [[NSUserDefaults standardUserDefaults] setObject:account.owner forKey:CARD_OWNER_KEY];
 //                [[NSUserDefaults standardUserDefaults] setObject:account.refreshDate forKey: LAST_REFRESH_DATE_KEY];
             }
-        }
+//        }
         
         return  YES;
     }
@@ -103,12 +103,10 @@
 
 - (Transactions *) transactions
 {
-    [self dispatchToStatusMessage: HISTORY_REFRESH_MSG];
-    TFHpple *parser = [aLaCardFetcher transactions];
     
-    if(parser)
-    {
-        Transactions * trans = [[Transactions alloc] initWithParser:parser];
+    [self dispatchToStatusMessage: HISTORY_REFRESH_MSG];
+    
+        Transactions * trans = [[Transactions alloc] initWithTransactions:_account.transactions];
         
         if(trans.transactionsDictionary.count > 0)
         {
@@ -120,11 +118,6 @@
         }
         
         [self dispatchToStatusDismissWithMessage: HISTORY_REFRESH_MSG AndTime:1];
-    }
-    else
-    {
-        [self dispatchError:CONNECTION_ERROR];
-    }
     
     return _transactions;
 }

@@ -23,15 +23,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:[[NSUserDefaults standardUserDefaults] objectForKey:CARD_NUMBER_KEY] forKey:CARD_NUMBER_KEY2];
     }
     
-    [Appirater setAppId:@"645246676"];
-    [Appirater setDaysUntilPrompt:1];
-    [Appirater setUsesUntilPrompt:10];
-    [Appirater setSignificantEventsUntilPrompt:-1];
-    [Appirater setTimeBeforeReminding:2];
-    [Appirater setDebug:NO];
-    
-    [Appirater appLaunched:YES];
-    
     return YES;
 }
 
@@ -57,8 +48,6 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    
-    [Appirater appEnteredForeground:YES];
 }
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )

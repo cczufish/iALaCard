@@ -21,7 +21,7 @@ static int type = 0;
     
     
     dispatch_once(&predC, ^{
-        sharedC = type == 0 ? [[OldConnection alloc]init] : [[EuroCardConnection alloc]init];
+        sharedC = [[EuroCardConnection alloc]init];
     });
     
     return sharedC;

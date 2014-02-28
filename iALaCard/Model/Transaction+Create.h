@@ -11,8 +11,9 @@
 #import "Constants.h"
 #define XPATH_QUERY_1 @"//tr[@class='tablerowalt1']"
 #define XPATH_QUERY_2 @"//tr[@class='tablerowalt2']"
+#define XPATH_QUERY_3 @"//*[@id='j_idt94:j_idt95:transactionsTable:tb']/tr"
 #define TRANSACTION_ID @"transactionId"
-#define DATE_FORMAT @"dd/MMM/yy"
+#define DATE_FORMAT @"dd/MM/yy"
 
 @interface Transaction (Create)
 + (NSMutableArray *)transactionsWithParser:(TFHpple *)parser;

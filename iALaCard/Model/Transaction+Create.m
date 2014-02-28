@@ -25,15 +25,7 @@
 + (NSArray *) getNodesFromParser:(TFHpple *) parser
 {
     NSMutableArray *formLabelNodes = [[NSMutableArray alloc]init];
-    
-    //even nodes
-    NSString *formLabelXpathQueryString = XPATH_QUERY_1;
-    [formLabelNodes addObjectsFromArray:[parser searchWithXPathQuery:formLabelXpathQueryString]];
-    
-    //pair nodes
-    formLabelXpathQueryString = XPATH_QUERY_2;
-    [formLabelNodes addObjectsFromArray:[parser searchWithXPathQuery:formLabelXpathQueryString]];
-    
+    [formLabelNodes addObjectsFromArray:[parser searchWithXPathQuery:XPATH_QUERY_3]];
     
     return formLabelNodes;
 }
@@ -49,7 +41,10 @@
             if([[child firstChild] content])
             {
                 [values addObject:[[child firstChild] content]];
-                //NSLog(@"conteudo %@",[[child firstChild] content]);
+                NSLog(@"conteudo %@",[[child firstChild] content]);
+            } else if([[[child firstChild] firstChild] content]){
+                [values addObject:[[[child firstChild] firstChild] content]];
+                NSLog(@"conteudo %@",[[[child firstChild] firstChild] content]);
             }
         }
         
@@ -89,6 +84,7 @@
     [f setNumberStyle:NSNumberFormatterNoStyle];
     
     [dateFormat setDateFormat:DATE_FORMAT];
+    
     transaction.date = [dateFormat dateFromString:[array[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     transaction.transactionId = [f numberFromString:[array[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     transaction.transactionType = [array[2] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

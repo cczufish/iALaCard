@@ -40,14 +40,13 @@
 		3173FAA81714C5FC002779B1 /* UIToolbarRightLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3173FAA71714C5FB002779B1 /* UIToolbarRightLogo.m */; };
 		3173FAAB1714C645002779B1 /* UIToolbarLeftLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3173FAAA1714C644002779B1 /* UIToolbarLeftLogo.m */; };
 		3173FAAE1714C6A0002779B1 /* UIViewBlack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3173FAAD1714C6A0002779B1 /* UIViewBlack.m */; };
-		318C0B461793657F000457E3 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C0B451793657F000457E3 /* Appirater.m */; };
 		318C0B48179365F2000457E3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 318C0B47179365F2000457E3 /* CFNetwork.framework */; };
-		318C0B4A179365FB000457E3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 318C0B49179365FB000457E3 /* StoreKit.framework */; };
 		318DCB1317050DD300B9581D /* TransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 318DCB1217050DD300B9581D /* TransactionTableViewCell.m */; };
 		318DCB1617051E3100B9581D /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 318DCB1517051E3000B9581D /* Constants.m */; };
 		31982B6517024A4100A52257 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 31982B6217024A4100A52257 /* SVProgressHUD.bundle */; };
 		31982B6617024A4100A52257 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 31982B6417024A4100A52257 /* SVProgressHUD.m */; };
 		31982B6817024A7700A52257 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31982B6717024A7700A52257 /* QuartzCore.framework */; };
+		319E197B17E907B200B1EBB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319E197A17E907B200B1EBB4 /* SystemConfiguration.framework */; };
 		31AB3D7717122EAE00949F50 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AB3D7217122EAE00949F50 /* Account.m */; };
 		31AB3D7817122EAE00949F50 /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AB3D7417122EAE00949F50 /* Transaction.m */; };
 		31AB3D7917122EAE00949F50 /* Transaction+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AB3D7617122EAE00949F50 /* Transaction+Create.m */; };
@@ -107,7 +106,6 @@
 		31EC2A7C16FF7A1A00E11411 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A7816FF7A1A00E11411 /* TFHppleElement.m */; };
 		31EC2A7D16FF7A1A00E11411 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A7A16FF7A1A00E11411 /* XPathQuery.m */; };
 		31EC2A7F16FF7A2E00E11411 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EC2A7E16FF7A2E00E11411 /* libxml2.dylib */; };
-		31EE061E171ADFAB0063601F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE061D171ADFAA0063601F /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,10 +154,7 @@
 		3173FAAA1714C644002779B1 /* UIToolbarLeftLogo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIToolbarLeftLogo.m; sourceTree = "<group>"; };
 		3173FAAC1714C69F002779B1 /* UIViewBlack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewBlack.h; sourceTree = "<group>"; };
 		3173FAAD1714C6A0002779B1 /* UIViewBlack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewBlack.m; sourceTree = "<group>"; };
-		318C0B441793657F000457E3 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = appirater/Appirater.h; sourceTree = "<group>"; };
-		318C0B451793657F000457E3 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = appirater/Appirater.m; sourceTree = "<group>"; };
 		318C0B47179365F2000457E3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		318C0B49179365FB000457E3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		318DCB1117050DD300B9581D /* TransactionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionTableViewCell.h; sourceTree = "<group>"; };
 		318DCB1217050DD300B9581D /* TransactionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionTableViewCell.m; sourceTree = "<group>"; };
 		318DCB1417051E3000B9581D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -168,6 +163,7 @@
 		31982B6317024A4100A52257 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
 		31982B6417024A4100A52257 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
 		31982B6717024A7700A52257 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		319E197A17E907B200B1EBB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		31AB3D7117122EAE00949F50 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Account.h; path = Model/Account.h; sourceTree = "<group>"; };
 		31AB3D7217122EAE00949F50 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Account.m; path = Model/Account.m; sourceTree = "<group>"; };
 		31AB3D7317122EAE00949F50 /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transaction.h; path = Model/Transaction.h; sourceTree = "<group>"; };
@@ -252,7 +248,6 @@
 		31EC2A7916FF7A1A00E11411 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		31EC2A7A16FF7A1A00E11411 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		31EC2A7E16FF7A2E00E11411 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		31EE061D171ADFAA0063601F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,9 +255,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				318C0B4A179365FB000457E3 /* StoreKit.framework in Frameworks */,
+				319E197B17E907B200B1EBB4 /* SystemConfiguration.framework in Frameworks */,
 				318C0B48179365F2000457E3 /* CFNetwork.framework in Frameworks */,
-				31EE061E171ADFAB0063601F /* SystemConfiguration.framework in Frameworks */,
 				31982B6817024A7700A52257 /* QuartzCore.framework in Frameworks */,
 				31EC2A7F16FF7A2E00E11411 /* libxml2.dylib in Frameworks */,
 				31EC2A6C16FF61EB00E11411 /* Security.framework in Frameworks */,
@@ -297,15 +291,6 @@
 				31131B2D1711D0180025ACB4 /* Transactions.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		318C0B4317936478000457E3 /* appirater */ = {
-			isa = PBXGroup;
-			children = (
-				318C0B441793657F000457E3 /* Appirater.h */,
-				318C0B451793657F000457E3 /* Appirater.m */,
-			);
-			name = appirater;
 			sourceTree = "<group>";
 		};
 		31982B61170249D600A52257 /* SVProgressHUD */ = {
@@ -403,8 +388,6 @@
 		31EBEE9716FD0BAA0029BE35 = {
 			isa = PBXGroup;
 			children = (
-				318C0B49179365FB000457E3 /* StoreKit.framework */,
-				318C0B47179365F2000457E3 /* CFNetwork.framework */,
 				31EBEEA916FD0BAA0029BE35 /* iALaCard */,
 				31EBEEA216FD0BAA0029BE35 /* Frameworks */,
 				31EBEEA116FD0BAA0029BE35 /* Products */,
@@ -423,7 +406,8 @@
 			isa = PBXGroup;
 			children = (
 				31EC2A7E16FF7A2E00E11411 /* libxml2.dylib */,
-				31EE061D171ADFAA0063601F /* SystemConfiguration.framework */,
+				319E197A17E907B200B1EBB4 /* SystemConfiguration.framework */,
+				318C0B47179365F2000457E3 /* CFNetwork.framework */,
 				31982B6717024A7700A52257 /* QuartzCore.framework */,
 				31EC2A6B16FF61EA00E11411 /* Security.framework */,
 				31EBEEA316FD0BAA0029BE35 /* UIKit.framework */,
@@ -442,7 +426,6 @@
 				31EC2A7116FF79CC00E11411 /* aLaCardFetcher */,
 				31EC2A6416FF5BB900E11411 /* Security */,
 				3102EC17176E1DC700BEEDB1 /* TWStatus */,
-				318C0B4317936478000457E3 /* appirater */,
 				31982B61170249D600A52257 /* SVProgressHUD */,
 				31EBEEAA16FD0BAA0029BE35 /* Supporting Files */,
 			);
@@ -564,6 +547,16 @@
 				CLASSPREFIX = iALaCard;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Rodolfo Torres";
+				TargetAttributes = {
+					31EBEE9F16FD0BAA0029BE35 = {
+						DevelopmentTeam = NH896G35L5;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 31EBEE9B16FD0BAA0029BE35 /* Build configuration list for PBXProject "iALaCard" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -688,7 +681,6 @@
 				31403D661784AB540063F125 /* OldConnection.m in Sources */,
 				31403D691784ADD80063F125 /* EuroCardConnection.m in Sources */,
 				31403D6E1784B2470063F125 /* iALaCardConnection+Shared.m in Sources */,
-				318C0B461793657F000457E3 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,7 +732,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "534C4906-5D19-4766-B947-153D1424BC09";
 				SDKROOT = iphoneos;
@@ -766,7 +758,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "534C4906-5D19-4766-B947-153D1424BC09";
 				SDKROOT = iphoneos;
@@ -777,16 +769,16 @@
 		31EBEEC416FD0BAA0029BE35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rodolfo Torres (XZC74FKFWJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iALaCard/iALaCard-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "iALaCard/iALaCard-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "99094D7D-8CB4-49A1-9769-F86751D1CA91";
+				PROVISIONING_PROFILE = "FB47E539-D354-4197-B339-0217F689DBFC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB47E539-D354-4197-B339-0217F689DBFC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -794,16 +786,16 @@
 		31EBEEC516FD0BAA0029BE35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iALaCard/iALaCard-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "iALaCard/iALaCard-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "FB47E539-D354-4197-B339-0217F689DBFC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB47E539-D354-4197-B339-0217F689DBFC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

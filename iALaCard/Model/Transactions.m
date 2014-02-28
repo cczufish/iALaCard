@@ -21,6 +21,43 @@
     return self;
 }
 
+- (Transactions *) initWithTransactions:(NSMutableArray *) trans
+{
+    self = [super init];
+    
+    self.transactionsDictionary = [self getSectionedTransactionsFromTrans: trans];
+    
+    self.lastRefreshDate = [NSDate date];
+    
+    return self;
+}
+
+
+//returns transaction sectioned by date
+- (NSDictionary * ) getSectionedTransactionsFromTrans: (NSMutableArray *) trans
+{
+    NSMutableDictionary *sectionedTransactions = [[NSMutableDictionary alloc] init];
+    
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:FALSE];
+//    [trans sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    for (Transaction *transaction in trans) {
+        
+        NSMutableArray *transactionsForSection = [sectionedTransactions objectForKey:transaction.date];
+        
+        if(!transactionsForSection) //doesn't contain an transaction object
+        {
+            transactionsForSection = [[NSMutableArray alloc]init];
+            
+            [sectionedTransactions setObject:transactionsForSection forKey:transaction.date];
+        }
+        
+        [transactionsForSection addObject:transaction];
+    }
+    
+    return sectionedTransactions;
+}
+
 
 //returns transaction sectioned by date
 - (NSDictionary * ) getSectionedTransactionsFromNodes: (NSArray *) nodes

@@ -8,12 +8,13 @@
 
 #import "aLaCardFetcher.h"
 
-#define FORM @"//form"
+#define FORM @"//form[@id='loginform']"
 #define ACTION @"action"
 #define HIDDEN_FIELDS_XPATH @"//input[@type='hidden']"
+#define HIDDEN_FIELDS_XPATH_L @"//form[@id='loginform']/input[@type='hidden']"
 #define NAME @"name"
 #define VALUE @"value"
-#define KEY @"share/key.jsp:KEY"
+#define KEY @"javax.faces.ViewState"
 
 
 #define POST @"POST"
@@ -30,21 +31,22 @@
 {
     NSString *action;
     NSArray *formNodes = [parser searchWithXPathQuery:FORM];
-    for (TFHppleElement *element in formNodes) {
-        action = [element objectForKey:ACTION];
-    }
-    return [action stringByReplacingOccurrencesOfString:@":80" withString:@""];
+    
+    TFHppleElement *element = [formNodes firstObject];
+    action = [element objectForKey:ACTION];
+    
+    return action;
 }
 
 + (NSString *) key:(TFHpple* )parser
 {
     NSString *key;
-    NSArray *formNodes = [parser searchWithXPathQuery: HIDDEN_FIELDS_XPATH];
+    NSArray *formNodes = [parser searchWithXPathQuery: HIDDEN_FIELDS_XPATH_L];
     for (TFHppleElement *element in formNodes) {
         NSString *name = [element objectForKey: NAME];
         if([name isEqualToString: KEY]){
             key = [element objectForKey:VALUE];
-            break;
+            //break;
         }
     }
     return key;
@@ -64,11 +66,8 @@
 + (TFHpple *) logIn:(NSString *) cardNumber andPassword:(NSString *) password
 {
     NSLog(@"started logIn");
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSURL *logInUrl = [NSURL URLWithString:[iALaCardConnection sharedALaCardConnectionManager].loginURL];
     
-    NSData *logInHtmlData = [NSData dataWithContentsOfURL:logInUrl];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    NSData *logInHtmlData = [aLaCardFetcher initLogin];
     
     //oldsite is often down, try the new one
     if(!logInHtmlData)
@@ -90,7 +89,11 @@
     
     if(action)
     {
-        NSURL *url = [[NSURL alloc] initWithString:action];
+        NSMutableString *urlAction = [[NSMutableString alloc]initWithString: @"https://www.euroticket-alacard.pt"];
+        
+        [urlAction appendString:action];
+        
+        NSURL *url = [[NSURL alloc] initWithString:urlAction];
         NSError *error;
         NSURLResponse *response;
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -98,32 +101,45 @@
         [request setHTTPMethod:POST];
         [request setURL:url];
         
-        NSMutableString *postString = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"%@=%@", KEY, [aLaCardFetcher key:logInParser]]];
+        NSMutableString *postString = [[NSMutableString alloc]initWithString:@"loginform=loginform"];
         
-        [postString appendFormat:@"&%@=%@", PORTAL, TYPE_CARD];
-        [postString appendFormat:@"&%@=%@", [iALaCardConnection sharedALaCardConnectionManager].loginSubmit, NOT_EMPTY];
-        [postString appendFormat:@"&%@=%@", PAGE, MEAL_PAGE];
+        
         
         [postString appendFormat:@"&%@=%@", [iALaCardConnection sharedALaCardConnectionManager].loginKey, cardNumber];
         [postString appendFormat:@"&%@=%@", [iALaCardConnection sharedALaCardConnectionManager].loginPasswordKey, password];
         
+        [postString appendString:@"&loginform:loginButton=Entrar"];
+        
+        NSString *cleanViewState = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                        (CFStringRef)[aLaCardFetcher key:logInParser],
+                                                                                        NULL,
+                                                                                        (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                        kCFStringEncodingUTF8 ));
+        
+        [postString appendFormat:@"&%@=%@", KEY, cleanViewState];
+        
+//        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//        
+//        [request setValue:[NSString stringWithFormat:@"%d", [postString length]] forHTTPHeaderField:@"Content-Length"];
+//        
+//        [request setHTTPBody:[[postString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
+//                              dataUsingEncoding:NSUTF8StringEncoding
+//                              allowLossyConversion:NO]];
+        
+        
         [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-        NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         
         
-        NSString *aStr = [[NSString alloc] initWithData:result encoding:NSASCIIStringEncoding];
+//        NSString *aStr = [[NSString alloc] initWithData:result encoding:NSASCIIStringEncoding];
         
-        if([[iALaCardConnection sharedALaCardConnectionManager] accountHasChanged:aStr] && [[iALaCardConnection sharedALaCardConnectionManager] isKindOfClass:[OldConnection class]])
-        {
-            NSLog(@"Eurocard");
-            [iALaCardConnection resetToEuroCard];
-            return [aLaCardFetcher logIn:cardNumber andPassword:password];
-        }
+        NSData *accountHtmlData = [NSData dataWithContentsOfURL:[response URL]];
+        
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         NSLog(@"ended logIn");
-        return [TFHpple hppleWithHTMLData:result];
+        return [TFHpple hppleWithHTMLData:accountHtmlData];
     }
     else{//refresh
         NSLog(@"refresh");
@@ -143,6 +159,26 @@
     NSLog(@"end account");
     TFHpple *tf = [TFHpple hppleWithHTMLData:accountHtmlData];
     return tf;
+}
+
++(NSData *) initLogin
+{
+    NSData *data;
+    NSError *error;
+    NSURLResponse *response;
+    
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    [request setHTTPMethod:@"GET"];
+    NSURL *url = [[NSURL alloc] initWithString:[iALaCardConnection sharedALaCardConnectionManager].loginURL];
+    [request setURL:url];
+    
+    
+    
+    data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    return data;
 }
 
 
